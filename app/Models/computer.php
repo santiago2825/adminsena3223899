@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class computer extends Model
 {
     use HasFactory;
+    public function apprentice(){
+        return $this->hasOne('App\Models\Apprentice');
+    }
 }
