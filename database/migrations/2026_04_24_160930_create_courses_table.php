@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->integer('course_number');
-            $table->integer('day');
+            $table->date('day');
             $table->timestamps();
             // llave foranea de areas
             $table->unsignedBigInteger('area_id');
