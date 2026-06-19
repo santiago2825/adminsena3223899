@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Training_center extends Model
 {
+    protected $fillable=[
+        'name',
+        'location',
+    ];
+
+
     use HasFactory;
     public function teachers(){
         return $this->hasMany('App\Models\Teacher');
