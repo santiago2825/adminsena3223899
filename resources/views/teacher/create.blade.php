@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>course</title>
+    <title>teacher</title>
 </head>
 <body>
-    <form action="{{route('course.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('teacher.store')}}" method="POST" enctype="multipart/form-data">
         @csrf 
 
         <label>
-            numero del curso:
+            nombre:
             <br>
-            <input type="number" name="course_number">
+            <input type="text" name="name">
         </label>
         <br>
         <label>
-            dia:
+            email:
             <br>
-            <input type="date" name="day">
+            <input type="email" name="email">
         </label>
         <br>
         <label for="training_center_id">id centro fromacion</label>
@@ -31,7 +31,7 @@
             @endforeach
         </select>
         <br><br>
-        <label for="area_id">id centro fromacion</label>
+        <label for="area_id">area</label>
         <select name="area_id" id="area_id" class="form-control">
             <option value="">seleccione un centro de formacion</option>
             @foreach($areas as $area)

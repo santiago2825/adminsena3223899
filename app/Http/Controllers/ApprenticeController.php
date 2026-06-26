@@ -13,7 +13,7 @@ class ApprenticeController extends Controller
         $computers = computer::all();
         $courses = course::all();
 
-        return view('apprentice.create', compact('computers','courses'));
+        return view('apprentices.create', compact('computers','courses'));
     }
 
     public function store(Request $request){
