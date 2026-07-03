@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
+    public function index(){
+        $teachers = Teacher::orderBy('id', 'desc')-> get();
+        return view('teacher.index',compact('teachers')) ;
+    }
     public function create(){
         $areas = Area::all();
         $training_centers = Training_center::all();

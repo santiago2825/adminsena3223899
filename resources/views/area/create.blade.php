@@ -3,7 +3,7 @@
     @section('content')
         
     
-    <form action="{{route('area.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('area.index')}}" method="POST" enctype="multipart/form-data">
         @csrf 
 
         <label>

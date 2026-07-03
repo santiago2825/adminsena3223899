@@ -14,22 +14,22 @@
             <div class="collapse navbar-collapse" id="navbarNavAdmin">
                 <ul class="navbar-nav ms-auto text-center nav-underline">
                     <li class="nav-item">
-                        <a class="nav-link" href="/teacher/create">Teacher</a>
+                        <a class="nav-link" href="/teacher/list">Teacher</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/computer/create"> Computer</a>
+                        <a class="nav-link" href="/computer/list"> Computer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/training_center/create">Training Center</a>
+                        <a class="nav-link" href="/training_center/list">Training Center</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/course/create">Course</a>
+                        <a class="nav-link" href="/course/list">Course</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/apprentice/create">Apprentices</a>
+                        <a class="nav-link" href="/apprentice/list">Apprentices</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/area/create">area</a>
+                        <a class="nav-link" href="/area/list">area</a>
                     </li>
                 </ul>
             </div>
