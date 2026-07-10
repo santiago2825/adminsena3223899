@@ -26,4 +26,5 @@ class ApprenticeController extends Controller
         Apprentice::create($request->all());
         return redirect()->route('apprentice.index');
     }
+    
 }

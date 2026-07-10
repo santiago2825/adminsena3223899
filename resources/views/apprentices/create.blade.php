@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
+
     <form action="{{route('apprentice.store')}}" method="POST" enctype="multipart/form-data">
-
     @csrf
-
     <label>
         Nombre:
         <input type="text" name="name">
@@ -20,7 +19,6 @@
     </label>
     <br>
     <br>
-
     <label for="course_id">Curso: </label>
         <select name="course_id" id="course_id" class="form-control">
             <option value="">Selecione un curso</option>
@@ -29,9 +27,7 @@
                     {{$course->course_number}}
                 </option>
             @endforeach
-
         </select>
-
         <br><br>
     <label for="computer_id">Equipo: </label>
         <select name="computer_id" id="computer_id" class="form-control">
@@ -41,12 +37,8 @@
                     {{$computer->number}}
                 </option>
             @endforeach
-
         </select>
-
         <br><br>
-
-
     <button class="btn btn-primary" type="submit">Button</button>
     </form>
 @endsection
