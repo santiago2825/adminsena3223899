@@ -20,7 +20,7 @@
                     <td>{{$area->name}}</td>
                     
                     
-                    <td><a href="{{ route('area.show', $area->id)}}">mostrar</a></td>
+                    <td><a href="{{ route('area.show', $area->id)}}">mostrar</a></td> 
                 </tr>
                     
                 @endforeach

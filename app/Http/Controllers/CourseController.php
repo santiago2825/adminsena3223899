@@ -16,13 +16,14 @@ class CourseController extends Controller
     public function create(){
         $training_centers = Training_center::all();
         $areas = Area::all();
-
         return view('course.create', compact('training_centers','areas'));
     }
-
+    public function show($id){
+        $course=course::find($id);
+        return view('course.show', compact('course')) ;
+    }
     public function store(Request $request){
-        $course = course::create($request->all());
-
-        return $course;
+        course::create($request->all());
+        return redirect()->route('course.index');
     }
 }

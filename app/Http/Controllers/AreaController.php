@@ -15,10 +15,12 @@ class AreaController extends Controller
     public function create(){
         return view ('area.create');
     }
-
+    public function show($id){
+        $area=Area::find($id);
+        return view('area.show', compact('area')) ;
+    }
     public function store (Request $request){
-
-        $area = Area::create($request->all());
-        return $area;
+        Area::create($request->all());
+        return redirect()->route('area.index');
     }
 }

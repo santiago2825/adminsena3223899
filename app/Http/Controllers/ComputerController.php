@@ -14,10 +14,12 @@ class ComputerController extends Controller
     public function create(){
         return view ('computer.create');
     }
-
+    public function show($id){
+        $computer=Computer::find($id);
+        return view('computer.show', compact('computer')) ;
+    }
     public function store (Request $request){
-
-        $computer = Computer::create($request->all());
-        return $computer;
+        Computer::create($request->all());
+        return redirect()->route('computer.index');
     }
 }

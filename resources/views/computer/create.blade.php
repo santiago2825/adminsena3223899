@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{route('computer.index')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('computer.store')}}" method="POST" enctype="multipart/form-data">
         @csrf 
 
         <label>

@@ -26,7 +26,7 @@
                     <td>{{$apprentice->course_id}}</td>
                     <td>{{$apprentice->computer_id}}</td>
                     
-                    <td><a href="{{ route('apprentice.show', $apprentice->id)}}">mostrar</a></td>
+                    <td><a href="{{ route('apprentices.show', $apprentice->id)}}">mostrar</a></td>
                 </tr>
                     
                 @endforeach

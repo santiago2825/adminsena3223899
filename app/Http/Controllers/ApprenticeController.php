@@ -16,13 +16,14 @@ class ApprenticeController extends Controller
     public function create(){
         $computers = computer::all();
         $courses = course::all();
-
         return view('apprentices.create', compact('computers','courses'));
     }
-
+    public function show($id){
+        $apprentice=Apprentice::find($id);
+        return view('apprentices.show', compact('apprentice')) ;
+    }
     public function store(Request $request){
-        $apprentices = Apprentice::create($request->all());
-
-        return $apprentices;
+        Apprentice::create($request->all());
+        return redirect()->route('apprentice.index');
     }
 }

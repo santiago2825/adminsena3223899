@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{route('course.index')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('course.store')}}" method="POST" enctype="multipart/form-data">
 
     @csrf
 

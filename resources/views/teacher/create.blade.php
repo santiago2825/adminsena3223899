@@ -1,21 +1,17 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{route('teacher.index')}}" method="POST" enctype="multipart/form-data">
-
+    <form action="{{route('teacher.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
-
     <label>
         Nombre Instructor: 
         <input type="text" name="name">
     </label>
     <br><br>
-
     <label>
         email: 
         <input type="email" name="email">
     </label>
     <br><br>
-
     <label for="area_id">Area:</label>
         <select name="area_id" id="area_id" class="form-control">
             <option value="">Selecione area</option>
@@ -24,9 +20,7 @@
                     {{$area->name}}
                 </option>
             @endforeach
-
         </select>
-
         <br><br>
     <label for="training_center_id">Centro de Formacion:</label>
         <select name="training_center_id" id="training_center_id" class="form-control">
@@ -36,12 +30,9 @@
                     {{$training_center->name}}
                 </option>
             @endforeach
-
         </select>
     <br><br>
         
-
-
     <button type="submit">Enviar Formulario</button>
     </form>
 @endsection

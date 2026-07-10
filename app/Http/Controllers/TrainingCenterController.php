@@ -14,11 +14,14 @@ class TrainingCenterController extends Controller
     public function create(){
         return view ('training_center.create');
     }
+    public function show($id){
+        $trainingcenter=Training_center::find($id);
+        return view('training_center.show', compact('trainingcenter')) ;
+    }
 
     public function store (Request $request){
-
-        $trainingcenter = Training_center::create($request->all());
-        return $trainingcenter;
+        Training_center::create($request->all());
+        return redirect()->route('training_center.index');
     }
 }
 

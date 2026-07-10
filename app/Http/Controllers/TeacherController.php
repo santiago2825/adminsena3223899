@@ -16,13 +16,15 @@ class TeacherController extends Controller
     public function create(){
         $areas = Area::all();
         $training_centers = Training_center::all();
-
         return view('teacher.create', compact('areas','training_centers'));
+    }
+    public function show($id){
+        $teacher=Teacher::find($id);
+        return view('teacher.show', compact('teacher')) ;
     }
 
     public function store(Request $request){
-        $teachers = Teacher::create($request->all());
-
-        return $teachers;
+        Teacher::create($request->all());
+        return redirect()->route('teacher.index');
     }
 }
