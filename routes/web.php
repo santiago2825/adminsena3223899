@@ -25,7 +25,6 @@ Route::get('/', function () {
 Route::get('/consultas',[Consult::class,'Consultas']);
 //areas
 route::get('area/list',[AreaController::class,'index'])->name('area.index');
-route::get('area/{id}',[AreaController::class,'show'])->name('area.show');
 route::get('area/create',[AreaController::class,'create']);
 route::post('area/store',[AreaController::class,'store'])->name('area.store');
 //computer
