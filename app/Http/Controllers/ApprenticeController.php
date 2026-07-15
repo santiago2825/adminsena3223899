@@ -26,5 +26,16 @@ class ApprenticeController extends Controller
         Apprentice::create($request->all());
         return redirect()->route('apprentice.index');
     }
+    public function edit ($id){
+        $apprentice=Apprentice::find($id);
+        $computers = computer::all();
+        $courses = course::all();
+        return view('apprentices.edit', compact('apprentice','computers','courses')) ;
+    }
+    public function update(Request $request, Apprentice $apprentice){
+        $apprentice->update($request->all());
+        return redirect()->route('apprentice.index');
+        
+    }
     
 }

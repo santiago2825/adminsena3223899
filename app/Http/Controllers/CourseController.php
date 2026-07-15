@@ -26,4 +26,14 @@ class CourseController extends Controller
         course::create($request->all());
         return redirect()->route('course.index');
     }
+    public function edit ($id){
+        $course=course::find($id);
+        $training_centers = Training_center::all();
+        $areas = Area::all();
+        return view('course.edit', compact('course','training_centers','areas')) ;
+    }
+    public function update(Request $request, course $course){
+        $course->update($request->all());
+        return redirect()->route('course.index');
+    }
 }

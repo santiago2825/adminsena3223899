@@ -22,4 +22,12 @@ class ComputerController extends Controller
         Computer::create($request->all());
         return redirect()->route('computer.index');
     }
+    public function edit ($id){
+        $computer=Computer::find($id);
+        return view('computer.edit', compact('computer')) ;
+    }
+    public function update(Request $request, Computer $computer){
+        $computer->update($request->all());
+        return redirect()->route('computer.index');
+    }
 }

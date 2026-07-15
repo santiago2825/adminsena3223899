@@ -23,4 +23,12 @@ class AreaController extends Controller
         Area::create($request->all());
         return redirect()->route('area.index');
     }
+    public function edit ($id){
+        $area=Area::find($id);
+        return view('area.edit', compact('area')) ;
+    }
+    public function update(Request $request, Area $area){
+        $area->update($request->all());
+        return redirect()->route('area.index');
+    }
 }

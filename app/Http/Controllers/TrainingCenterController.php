@@ -23,5 +23,13 @@ class TrainingCenterController extends Controller
         Training_center::create($request->all());
         return redirect()->route('training_center.index');
     }
+    public function edit ($id){
+        $trainingcenter=Training_center::find($id);
+        return view('training_center.edit', compact('trainingcenter')) ;
+    }
+    public function update(Request $request, Training_center $trainingcenter){
+        $trainingcenter->update($request->all());
+        return redirect()->route('training_center.index');
+    }
 }
 

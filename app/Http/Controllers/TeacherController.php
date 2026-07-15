@@ -27,4 +27,14 @@ class TeacherController extends Controller
         Teacher::create($request->all());
         return redirect()->route('teacher.index');
     }
+    public function edit ($id){
+        $teacher=Teacher::find($id);
+        $areas = Area::all();
+        $training_centers = Training_center::all();
+        return view('teacher.edit', compact('teacher','areas','training_centers')) ;
+    }
+    public function update(Request $request, Teacher $teacher){
+        $teacher->update($request->all());
+        return redirect()->route('teacher.index');
+    }
 }
