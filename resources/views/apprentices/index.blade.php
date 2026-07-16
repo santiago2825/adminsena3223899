@@ -1,40 +1,100 @@
-    @extends('layouts.app')
-    @section('content')
+@extends('layouts.app')
 
-    <h1>LISTA DE APRENDICES</h1>
+@section('content')
 
-    <div class="container">
-        <table id="idApprentice" class="table table-striped table-bordered">
-            <thead>
+<div class="container py-5">
+
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="fw-bold text-success mb-1">
+                Gestión de Aprendices
+            </h1>
+
+            <p class="text-secondary mb-0">
+                Administra los aprendices registrados en el sistema.
+            </p>
+        </div>
+
+        <a href="{{ route('apprentices.create') }}"
+            class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">
+            <i class="fas fa-plus-circle me-1"></i>
+            Nuevo Aprendiz
+        </a>
+
+    </div>
+
+    <!-- Tabla -->
+    <div class="card border-0 shadow rounded-4 overflow-hidden">
+        <table class="table table-hover align-middle mb-0">
+
+            <thead class="table-dark text-center">
+
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Numero de telefono</th>
-                    <th>Id curso</th>
-                    <th> Id computador</th>
+                    <th>Teléfono</th>
+                    <th>Curso</th>
+                    <th>Computador</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
+
             </thead>
+
             <tbody>
+
                 @foreach ($apprentices as $apprentice)
+
                 <tr>
-                    <br>
-                    <td>{{$apprentice->id}}</td>
-                    <td>{{$apprentice->name}}</td>
-                    <td>{{$apprentice->email}}</td>
-                    <td>{{$apprentice->cell_number}}</td>
-                    <td>{{$apprentice->course_id}}</td>
-                    <td>{{$apprentice->computer_id}}</td>
-                    
-                    <td><a href="{{ route('apprentices.show', $apprentice->id)}}">mostrar</a></td>
+
+                    <td>{{ $apprentice->id }}</td>
+
+                    <td class="fw-semibold">
+                        {{ $apprentice->name }}
+                    </td>
+
+                    <td>{{ $apprentice->email }}</td>
+
+                    <td>{{ $apprentice->cell_number }}</td>
+
+                    <td>{{ $apprentice->course_id }}</td>
+
+                    <td>{{ $apprentice->computer_id }}</td>
+
+                    <td class="text-center">
+
+                        <a href="{{ route('apprentices.show', $apprentice->id) }}"
+                            class="btn btn-primary btn-sm rounded-circle">
+
+                            <i class="fas fa-eye"></i>
+
+                        </a>
+
+                    </td>
+
+                    <td class="text-center">
+
+                        <a href="{{ route('apprentices.edit', $apprentice->id) }}"
+                            class="btn btn-warning btn-sm rounded-circle text-white">
+
+                            <i class="fas fa-pen"></i>
+
+                        </a>
+
+                    </td>
+
                 </tr>
-                    
+
                 @endforeach
+
             </tbody>
 
         </table>
 
     </div>
 
+</div>
 
-    @endsection
+@endsection

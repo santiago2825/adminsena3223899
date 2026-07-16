@@ -1,35 +1,100 @@
 @extends('layouts.app')
+
 @section('content')
 
-<h1>lista de instructores</h1>
+<div class="container py-5">
 
-<div>
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Id area</th>
-                <th>Id centro de formacion</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($teachers as $teacher)
-            <tr>
-                <td>{{ $teacher->id }}</td>
-                <td>{{ $teacher->name }}</td>
-                <td>{{ $teacher->email }}</td>
-                <td>{{ $teacher->area_id }}</td>
-                <td>{{ $teacher->training_center_id }}</td>
-                <td>
-                    <a href="{{ route('teacher.show', $teacher->id) }}" class="btn btn-info">Mostrar</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="fw-bold text-success mb-1">
+                Gestión de Instructores
+            </h1>
+
+            <p class="text-secondary mb-0">
+                Administra los instructores registrados en el sistema.
+            </p>
+        </div>
+
+        <a href="{{ route('teacher.create') }}"
+            class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">
+
+            <i class="fas fa-plus-circle me-1"></i>
+            Nuevo Instructor
+
+        </a>
+
+    </div>
+
+    <!-- Tabla -->
+    <div class="card border-0 shadow rounded-4 overflow-hidden">
+
+        <table class="table table-hover align-middle mb-0">
+
+            <thead class="table-dark text-center">
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Área</th>
+                    <th>Centro de Formación</th>
+                    <th colspan="2">Acciones</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach($teachers as $teacher)
+
+                <tr>
+
+                    <td>{{ $teacher->id }}</td>
+
+                    <td class="fw-semibold">
+                        {{ $teacher->name }}
+                    </td>
+
+                    <td>{{ $teacher->email }}</td>
+
+                    <td>{{ $teacher->area->name }}</td>
+
+                    <td>{{ $teacher->training_center->name }}</td>
+
+                    <td class="text-center">
+
+                        <a href="{{ route('teacher.show', $teacher->id) }}"
+                            class="btn btn-primary btn-sm rounded-circle">
+
+                            <i class="fas fa-eye"></i>
+
+                        </a>
+
+                    </td>
+
+                    <td class="text-center">
+
+                        <a href="{{ route('teacher.edit', $teacher->id) }}"
+                            class="btn btn-warning btn-sm rounded-circle text-white">
+
+                            <i class="fas fa-pen"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+    </div>
+
 </div>
 
 @endsection

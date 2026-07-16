@@ -1,33 +1,89 @@
 @extends('layouts.app')
+
 @section('content')
 
-<h1>AREAS</h1>
+<div class="container py-5">
 
-    <div class="container">
-        <table id="idApprentice" class="table table-striped table-bordered">
-            <thead>
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="fw-bold text-success mb-1">
+                Gestión de Áreas
+            </h1>
+
+            <p class="text-secondary mb-0">
+                Administra las áreas registradas en el sistema.
+            </p>
+        </div>
+
+        <a href="{{ route('area.create') }}"
+            class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">
+            <i class="fas fa-plus-circle me-1"></i>
+            Nueva Área
+        </a>
+
+    </div>
+
+    <!-- Tabla -->
+    <div class="card border-0 shadow rounded-4 overflow-hidden">
+
+        <table class="table table-hover align-middle mb-0">
+
+            <thead class="table-dark text-center">
+
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Acciones</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
+
             </thead>
+
             <tbody>
+
                 @foreach ($areas as $area)
+
                 <tr>
-                    <br>
-                    <td>{{$area->id}}</td>
-                    <td>{{$area->name}}</td>
-                    
-                    
-                    <td><a href="{{ route('area.show', $area->id)}}">mostrar</a></td> 
+
+                    <td>{{ $area->id }}</td>
+
+                    <td class="fw-semibold">
+                        {{ $area->name }}
+                    </td>
+
+                    <td class="text-center">
+
+                        <a href="{{ route('area.show', $area->id) }}"
+                            class="btn btn-primary btn-sm rounded-circle">
+
+                            <i class="fas fa-eye"></i>
+
+                        </a>
+
+                    </td>
+
+                    <td class="text-center">
+
+                        <a href="{{ route('area.edit', $area->id) }}"
+                            class="btn btn-warning btn-sm rounded-circle text-white">
+
+                            <i class="fas fa-pen"></i>
+
+                        </a>
+
+                    </td>
+
                 </tr>
-                    
+
                 @endforeach
+
             </tbody>
 
         </table>
 
     </div>
+
+</div>
 
 @endsection
