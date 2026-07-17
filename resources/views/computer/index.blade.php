@@ -20,7 +20,7 @@
         <a href="{{ route('computer.create') }}"
             class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">
 
-            <i class="fas fa-plus-circle me-1"></i>
+            <i class="fas fa-plus"></i>
             Nuevo Computador
 
         </a>
@@ -38,7 +38,7 @@
                     <th>ID</th>
                     <th>Número</th>
                     <th>Marca</th>
-                    <th colspan="2">Acciones</th>
+                    <th colspan="3">Acciones</th>
                 </tr>
 
             </thead>
@@ -77,6 +77,16 @@
 
                         </a>
 
+                    </td>
+                    <td class="text-center">
+
+                        <form action="{{ route('computer.destroy', $computer->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm rounded-circle">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
 
                 </tr>

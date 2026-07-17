@@ -31,5 +31,9 @@ class TrainingCenterController extends Controller
         $trainingcenter->update($request->all());
         return redirect()->route('training_center.index');
     }
+    public function destroy(Training_center $trainingcenter){
+        $trainingcenter->delete();
+        return redirect()->route('training_center.index');
+    }
 }
 

@@ -24,7 +24,7 @@ class ApprenticeController extends Controller
     }
     public function store(Request $request){
         Apprentice::create($request->all());
-        return redirect()->route('apprentice.index');
+        return redirect()->route('apprentices.index');
     }
     public function edit ($id){
         $apprentice=Apprentice::find($id);
@@ -34,8 +34,12 @@ class ApprenticeController extends Controller
     }
     public function update(Request $request, Apprentice $apprentice){
         $apprentice->update($request->all());
-        return redirect()->route('apprentice.index');
+        return redirect()->route('apprentices.index');
         
+    }
+    public function destroy(Apprentice $apprentice){
+        $apprentice->delete();
+        return redirect()->route('apprentices.index');
     }
     
 }

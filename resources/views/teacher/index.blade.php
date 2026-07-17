@@ -20,7 +20,7 @@
         <a href="{{ route('teacher.create') }}"
             class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">
 
-            <i class="fas fa-plus-circle me-1"></i>
+            <i class="fas fa-plus"></i>
             Nuevo Instructor
 
         </a>
@@ -40,7 +40,7 @@
                     <th>Correo</th>
                     <th>Área</th>
                     <th>Centro de Formación</th>
-                    <th colspan="2">Acciones</th>
+                    <th colspan="3">Acciones</th>
                 </tr>
 
             </thead>
@@ -83,6 +83,16 @@
 
                         </a>
 
+                    </td>
+                    <td class="text-center">
+
+                        <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm rounded-circle">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
 
                 </tr>
