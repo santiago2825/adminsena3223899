@@ -48,39 +48,9 @@
             <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
         </button>
     </div>
-    <!-- Misión y Visión -->
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="card shadow h-100 border-0">
-                <div class="card-header bg-success text-white text-center">
-                    <h3>Misión</h3>
-                </div>
-                <div class="card-body">
-                    <p class="text-justify">
-                        El Servicio Nacional de Aprendizaje (SENA) está encargado de cumplir la función
-                        que corresponde al Estado de invertir en el desarrollo social y técnico de los
-                        trabajadores colombianos, ofreciendo formación profesional integral para contribuir
-                        al desarrollo económico, social y tecnológico del país.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card shadow h-100 border-0">
-                <div class="card-header bg-success text-white text-center">
-                    <h3>Visión</h3>
-                </div>
-                <div class="card-body">
-                    <p class="text-justify">
-                        Para el año 2026 el SENA continuará consolidándose como la entidad líder en
-                        formación profesional integral, impulsando la innovación, la transformación
-                        digital, el emprendimiento y la empleabilidad para fortalecer la competitividad
-                        del país.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h2>nuestras ofertas educativas</h2>
+    <h3>Encuentra tu programa ideal, formación titulada, cursos cortos e idiomas con instructores especializados.</h3>
+    
 
 </div>
 

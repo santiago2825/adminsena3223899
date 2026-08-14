@@ -18,11 +18,14 @@ use App\Http\Controllers\TrainingCenterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//home
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/consultas',[Consult::class,'Consultas']);
+//about
+Route::get('/about', function () {
+    return view('about');
+});
 //areas
 route::get('area/list',[AreaController::class,'index'])->name('area.index');
 route::get('area/create',[AreaController::class,'create'])->name('area.create');

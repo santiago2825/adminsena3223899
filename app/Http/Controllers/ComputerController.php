@@ -8,7 +8,7 @@ use App\Models\Computer;
 class ComputerController extends Controller
 {
     public function index(){
-        $computers = Computer::orderBy('id', 'desc')-> get();
+        $computers = Computer::orderBy('id', 'asc')-> paginate(3);
         return view('computer.index',compact('computers')) ;
     }
     public function create(){
