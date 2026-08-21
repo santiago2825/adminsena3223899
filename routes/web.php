@@ -26,6 +26,12 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/registro', function () {
+    return view('registro');
+});
 //areas
 route::get('area/list',[AreaController::class,'index'])->name('area.index');
 route::get('area/create',[AreaController::class,'create'])->name('area.create');

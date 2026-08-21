@@ -37,108 +37,162 @@
             </button>
         </div>
     </div>
-    <div class="container py-5">
+
+    <!-- SECCIÓN OFERTAS EDUCATIVAS -->
+    <section class="container py-5">
         <h2 class="text-center text-success fw-bold mb-4">Nuestras ofertas educativas</h2>
         <div class="row g-4">
+            
             <div class="col-md-8">
-                <!-- card grande-->
-                <div class="card h-100 border rounded-3 p-4 bg-success bg-opacity-10">
+                <!-- card grande con verde suave corregido (bg-opacity-10) -->
+                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-success bg-opacity-10 card-hover">
                     <div class="card-body p-0 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="bg-success bg-opacity-25 text-succes rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
                                 style="width: 44px; height:44px;">
                                 <i class="bi bi-mortarboard-fill fs-5"></i>
                             </div>
-                            <h3 class="h5 fw-bold text-dark mb-2">carreras tecnicas y tecnologicas
-                            </h3>
-                            <p class="text-secundary small mb-4">
-                                programas de educacion superior diseños para responder a las necesidades del sector
-                                productivo. duracion de 1 a 2 años.
+                            <h3 class="h5 fw-bold text-dark mb-2">Carreras técnicas y tecnológicas</h3>
+                            <p class="text-secondary small mb-4">
+                                Programas de educación superior diseñados para responder a las necesidades del sector productivo. Duración de 1 a 2 años.
                             </p>
-
                         </div>
                         <div>
                             <a class="text-success text-decoration-none fw-semibold small">
-                                explorar carreras &rarr;
+                                Explorar carreras &rarr;
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--card pequeña-->
+
+            <!-- card pequeña -->
             <div class="col-md-4">
-                <div class="card h-100 border rounded p-4 bg-white">
+                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white card-hover">
                     <div class="card-body p-0 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="bg-success bg-opacity-25 text-succes rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
                                 style="width: 44px; height:44px;">
                                 <i class="bi bi-broadcast fs-5"></i>
                             </div>
-                            <h3 class="h5 fw-bold text-dark md-2">
-                                cursos cortos
-                            </h3>
-                            <p class="text-secundary small mb-4">
-                                formacion complementaria para actualizar o adquirir nuevos conocimientos especificos de
-                                forma rapida
+                            <h3 class="h5 fw-bold text-dark mb-2">Cursos cortos</h3>
+                            <p class="text-secondary small mb-4">
+                                Formación complementaria para actualizar o adquirir nuevos conocimientos específicos de forma rápida.
                             </p>
                         </div>
                         <div>
                             <a class="text-success text-decoration-none fw-semibold small">
-                                ver cursos &rarr;
+                                Ver cursos &rarr;
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--2 card-->
+
+            <!-- 2 card -->
             <div class="col-md-4">
-                <div class="card h-100 border rounded p-4 bg-white">
+                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white card-hover">
                     <div class="card-body p-0 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="bg-success bg-opacity-25 text-succes rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
                                 style="width: 44px; height:44px;">
                                 <i class="bi bi-globe fs-5"></i>
                             </div>
-                            <h3 class="h5 fw-bold text-dark md-2">
-                                bilinguismo
-                            </h3>
-                            <p class="text-secundary small mb-4">
-                                programa integral para el aprendizaje de idiomas, fortaleciendo las competencias comunicativas globales.
+                            <h3 class="h5 fw-bold text-dark mb-2">Bilingüismo</h3>
+                            <p class="text-secondary small mb-4">
+                                Programa integral para el aprendizaje de idiomas, fortaleciendo las competencias comunicativas globales.
                             </p>
                         </div>
                         <div>
                             <a class="text-success text-decoration-none fw-semibold small">
-                                Aprender mas &rarr;
+                                Aprender más &rarr;
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--2 card grande-->
+
+            <!-- 2 card grande -->
             <div class="col-md-8">
-                <div class="card h-100 border rounded-3 p-4 bg-success bg-opacity-10">
+                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-success bg-opacity-10 card-hover">
                     <div class="card-body p-0 d-flex flex-column justify-content-between">
                         <div>
-                            <div class="bg-success bg-opacity-25 text-succes rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
+                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
                                 style="width: 44px; height:44px;">
                                 <i class="bi bi-display fs-5"></i>
                             </div>
-                            <h3 class="h5 fw-bold text-dark mb-2">
-                                formacion virtual
-                            </h3>
-                            <p class="text-secundary small mb-4">
-                                estudia desde cualquier lugar con nuestra plataforma de aprendizaje en linea. flexibilidad total para tu desarrollo profesional
+                            <h3 class="h5 fw-bold text-dark mb-2">Formación virtual</h3>
+                            <p class="text-secondary small mb-4">
+                                Estudia desde cualquier lugar con nuestra plataforma de aprendizaje en línea. Flexibilidad total para tu desarrollo profesional.
                             </p>
                         </div>
+                        <div class="d-flex gap-2 mt-3">
+                            <span class="badge bg-success bg-opacity-25 text-success fw-semibold rounded-pill px-3 py-2">Virtual</span>
+                            <span class="badge bg-success bg-opacity-25 text-success fw-semibold rounded-pill px-3 py-2">A distancia</span>
+                        </div>
                     </div>
-                    <div class="d-flex gap-2 ms-md-5 ps-md-2">
-                    <span class="badge bg-success bg-opacity-10 text-success fw-semibod rounded-pill px-3 py-2">virtual</span>
-                    <span class="badge bg-success bg-opacity-10 text-success fw-semibod rounded-pill px-3 py-2">a distancia</span>
                 </div>
-                </div>
-                
             </div>
-        </div>
 
-    </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ACTUALIDAD SENA -->
+    <section class="container py-5">
+        <h2 class="text-center text-success fw-bold mb-4">Actualidad SENA</h2>
+        
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Card 1 -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <img src="{{ asset('img/imagen5.webp') }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="noticias">
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize">Nuevas alianzas internacionales</h5>
+                        <p class="card-text">
+                            El SENA firma importantes acuerdos de cooperación para promover el intercambio de aprendices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <img src="{{ asset('img/imagen4.webp') }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="noticias">
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize">Aprendices triunfan en competencia nacional de robótica</h5>
+                        <p class="card-text">
+                            Equipos de diferentes regionales demostraron su talento y habilidades técnicas obteniendo los primeros lugares en certámenes tecnológicos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <img src="{{ asset('img/imagen6.webp') }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="noticias">
+                    <div class="card-body">
+                        <h5 class="card-title text-capitalize">Fondo Emprender abre nuevas convocatorias para jóvenes</h5>
+                        <p class="card-text">
+                            Se destinan recursos significativos para apoyar iniciativas de negocios innovadoras creadas por jóvenes talentos a nivel nacional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Estilo CSS para el efecto hover -->
+    <style>
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        }
+    </style>
 @endsection

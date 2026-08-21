@@ -3,12 +3,8 @@
         <a class="navbar-brand fw-bold text-white" href="/">
             Admin SENA
         </a>
-        <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAdmin"
-            aria-controls="navbarNavAdmin"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAdmin"
+            aria-controls="navbarNavAdmin" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAdmin">
@@ -23,11 +19,8 @@
                 </li>
                 <!-- ADMINISTRACIÓN -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white fw-bold"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Administración
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
@@ -70,6 +63,11 @@
                     </ul>
                 </li>
             </ul>
+            <div class="d-flex gap-3 justify-content-center align-items-center">
+                <a href="/login" class="btn btn-light border shadow-sm px-4 py-2 fw-semibold text-success">
+                    Acceder
+                </a>
+            </div>
         </div>
     </div>
 </nav>
