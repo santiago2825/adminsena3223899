@@ -8,7 +8,7 @@ use App\Models\Training_center;
 class TrainingCenterController extends Controller
 {
     public function index(){
-        $trainingcenters = Training_center::orderBy('id', 'desc')-> get();
+        $trainingcenters = Training_center::orderBy('id', 'asc')-> get();
         return view('training_center.index',compact('trainingcenters')) ;
     }
     public function create(){

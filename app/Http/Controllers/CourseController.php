@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function index(){
-        $courses = Course::orderBy('id', 'desc')-> get();
+        $courses = Course::orderBy('id', 'asc')-> get();
         return view('course.index',compact('courses')) ;
     }
     public function create(){
