@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function index(){
-        $teachers = Teacher::orderBy('id', 'asc')-> get();
+        $teachers = Teacher::orderBy('id', 'asc')-> paginate(5);
         return view('teacher.index',compact('teachers')) ;
     }
     public function create(){

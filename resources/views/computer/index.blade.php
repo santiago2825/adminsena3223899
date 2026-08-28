@@ -11,76 +11,136 @@
                     Administra los computadores registrados en el sistema.
                 </p>
             </div>
-            <a href="{{ route('computer.create') }}" class="btn btn-success btn-sm rounded-pill px-3 shadow-sm">
-                <i class="fas fa-plus"></i>
-                Nuevo Computador
+            <a href="{{ route('computer.create') }}" class="btn btn-success rounded-pill px-4 shadow-sm fw-semibold">
+                <i class="fas fa-plus me-1"></i> Nuevo Computador
             </a>
         </div>
         <!-- Tabla -->
-        <div class="card border-0 shadow rounded-4 overflow-hidden">
-            <table class="table table-hover align-middle mb-0">
-                <thead class="table-dark text-center">
-                    <tr>
-                        <th>ID</th>
-                        <th>Número</th>
-                        <th>Marca</th>
-                        <th colspan="3">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($computers as $computer)
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                    <thead class="table-dark text-center">
                         <tr>
-                            <td>{{ $computer->id }}</td>
-                            <td class="fw-semibold">
-                                {{ $computer->number }}
-                            </td>
-                            <td>{{ $computer->brand }}</td>
-                            <td class="text-center">
-                                <a href="{{ route('computer.show', $computer->id) }}"
-                                    class="btn btn-primary btn-sm rounded-circle">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a href="{{ route('computer.edit', $computer->id) }}"
-                                    class="btn btn-warning btn-sm rounded-circle text-white">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <form action="{{ route('computer.destroy', $computer->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm rounded-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
+                            <th class="py-3">ID</th>
+                            <th class="text-start py-3">Número</th>
+                            <th class="text-start py-3">Marca</th>
+                            <th class="py-3 sticky-actions col-acciones">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($computers as $computer)
+                            <tr>
+                                <td class="text-center text-muted fw-bold">{{ $computer->id }}</td>
+                                <td class="fw-semibold text-dark text-start">
+                                    {{ $computer->number }}
+                                </td>
+                                <td class="text-secondary text-start">{{ $computer->brand }}</td>
+                                <td class="text-center sticky-actions col-acciones">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('computer.show', $computer->id) }}"
+                                            class="btn btn-sm btn-outline-primary rounded-circle action-btn"
+                                            title="Ver detalle">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('computer.edit', $computer->id) }}"
+                                            class="btn btn-sm btn-outline-warning rounded-circle action-btn"
+                                            title="Editar">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <form action="{{ route('computer.destroy', $computer->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle action-btn"
+                                                onclick="return confirm('¿Estás seguro de eliminar este computador?')"
+                                                title="Eliminar">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="bg-light py-3 border-top">
+                                <div class="d-flex justify-content-center m-0">
+                                    {{ $computers->links() }}
+                                </div>
                             </td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <!-- PAGINACIÓN -->
-        <div class="d-flex justify-content-center mt-4 ">
-            {{ $computers->links() }}
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
+    
     <style>
-    .pagination .page-item.active .page-link {
-        background-color: #198754;
-        border-color: #198754;
-        color: white;
-    }
+        
+        .col-acciones {
+            width: 140px;
+            min-width: 140px;
+        }
 
-    .pagination .page-link {
-        color: #198754;
-    }
+        .action-btn {
+            width: 31px;
+            height: 31px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            transition: all 0.2s ease-in-out;
+        }
 
-    .pagination .page-link:hover {
-        background-color: #198754;
-        border-color: #198754;
-        color: white;
-    }
-</style>
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        
+        .sticky-actions {
+            position: sticky;
+            right: 0;
+            background-color: #ffffff;
+            z-index: 2;
+            box-shadow: -3px 0 5px rgba(0, 0, 0, 0.03);
+        }
+
+        
+        .table-striped > tbody > tr:nth-of-type(odd) > td.sticky-actions {
+            background-color: #f9fbf9;
+        }
+
+        
+        .table-hover > tbody > tr:hover > td.sticky-actions {
+            background-color: #f1f3f5;
+        }
+
+        /* Encabezado fijo de acciones */
+        thead th.sticky-actions {
+            background-color: #212529 !important;
+            z-index: 3;
+        }
+
+        .pagination {
+            margin-bottom: 0 !important;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #198754;
+            border-color: #198754;
+            color: white;
+        }
+
+        .pagination .page-link {
+            color: #198754;
+            box-shadow: none !important;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #198754;
+            border-color: #198754;
+            color: white;
+        }
+    </style>
 @endsection
