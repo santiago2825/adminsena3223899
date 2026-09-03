@@ -7,17 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apprentice extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
+        'document',
         'email',
         'cell_number',
         'course_id',
-        'computer_id',
+        'user_id',
     ];
-    use HasFactory;
-    public function computer(){
-        return $this->belongsTo('App\Models\computer');
+
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
+
     public function course(){
         return $this->belongsTo('App\Models\course');
     }

@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
 
+    use HasFactory;
+    
     protected $fillable=[
         'name',
     ];
     
-    use HasFactory;
-    public function courses(){
-        return $this->hasMany('App\Models\course');
-    }
-    public function teachers(){
-        return $this->hasMany('App\Models\Teacher');
+    public function programs(){
+        return $this->belongsToMany('App\Models\Program');
     }
 }
