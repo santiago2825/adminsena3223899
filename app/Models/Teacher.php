@@ -9,16 +9,17 @@ class Teacher extends Model
 {
     protected $fillable = [
         'name',
+        'document',
         'email',
-        'area_id',
-        'training_center_id',
+        'user_id',
     ];
     use HasFactory;
-    public function area(){
-        return $this->belongsTo('App\Models\Area');
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
-    public function training_center(){
-        return $this->belongsTo('App\Models\Training_center');
+
+    public function environments(){
+        return $this->belongsToMany('App\Models\Environment');
     }
     public function courses(){
         return $this->belongsToMany('App\Models\course');

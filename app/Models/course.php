@@ -8,24 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class course extends Model
 {
 
+    use HasFactory;
 
     protected $fillable = [
         'course_number',
         'day',
-        'area_id',
-        'training_center_id'
-
-
+        'program_id',
     ];
-    use HasFactory;
     public function apprentices(){
         return $this->hasMany('App\Models\Apprentice');
     }
-    public function area(){
-        return $this->belongsTo('App\Models\Area');
+    public function program(){
+        return $this->belongsTo('App\Models\Program');
     }
-    public function training_center(){
-        return $this->belongsTo('App\Models\Training_center');
+    public function environments(){
+        return $this->belongsToMany('App\Models\Environment');
     }
     public function teachers(){
         return $this->belongsToMany('App\Models\Teacher');

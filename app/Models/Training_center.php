@@ -14,10 +14,10 @@ class Training_center extends Model
 
 
     use HasFactory;
-    public function teachers(){
-        return $this->hasMany('App\Models\Teacher');
+    public function environments(){
+        return $this->hasMany('App\Models\Environment');
     }
-    public function courses(){
-        return $this->hasMany('App\Models\course');
+    public function programs(){
+        return $this->hasMany('App\Models\Program');
     }
 }
