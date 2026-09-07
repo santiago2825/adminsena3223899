@@ -10,7 +10,7 @@ class Program extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'center_id'
+        'Training_center_id'
     ];
 
     public function course(){
@@ -21,5 +21,8 @@ class Program extends Model
     }
     public function training_centers(){
         return $this->belongsTo('App\Models\Training_center');
+    }
+    public function offer(){
+        return $this->hasMany('App\Models\Offer');
     }
 }

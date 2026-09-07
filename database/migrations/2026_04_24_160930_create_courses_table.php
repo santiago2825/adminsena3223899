@@ -15,25 +15,26 @@ return new class extends Migration
             $table->id();
             $table->integer('course_number');
             $table->date('day');
+            // llave foranea de programa
+            $table->unsignedBigInteger('program_id');
+
+            $table->foreign('program_id')
+            ->references('id')
+            ->on('programs')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            //llave foranea de ambientes
+            $table->unsignedBigInteger('environment_id');
+
+            $table->foreign('environment_id')
+            ->references('id')
+            ->on('environments')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->timestamps();
-            // llave foranea de areas
-            $table->unsignedBigInteger('area_id');
-
-            $table->foreign('area_id')
-            ->references('id')
-            ->on('areas')
-            ->onDelete('cascade')
-            ->onUpdate('cascade')
-            ;
-            //llave foranea de training center
-            $table->unsignedBigInteger('training_center_id');
-
-            $table->foreign('training_center_id')
-            ->references('id')
-            ->on('training_centers')
-            ->onDelete('cascade')
-            ->onUpdate('cascade')
-            ;
+            
 
 
         });

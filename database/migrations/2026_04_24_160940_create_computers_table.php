@@ -15,6 +15,15 @@ return new class extends Migration
             $table->id();
             $table->integer('number');
             $table->string('brand');
+            //llave foranea de ambiente
+            
+            $table->unsignedBigInteger('environment_id');
+            $table->foreign('environment_id')
+            ->references('id')
+            ->on('environments')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->timestamps();
         });
     }

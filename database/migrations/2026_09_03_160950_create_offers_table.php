@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->string('descrption');
+            $table->boolean('state');
+            $table->date('start_date');
+            $table->date('end_date');
+            //llave foranea de programa
+            $table->unsignedBigInteger('program_id');
+
+            $table->foreign('program_id')
+            ->references('id')
+            ->on('programs')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->timestamps();
         });
     }

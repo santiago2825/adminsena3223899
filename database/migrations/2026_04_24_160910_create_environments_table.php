@@ -11,9 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('area_programs', function (Blueprint $table) {
+        Schema::create('environments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('location');
+            //llaves foranea de teacher
+            $table->unsignedBigInteger('teacher_id');
+
+            $table->foreign('teacher_id')
+            ->references('id')
+            ->on('teachers')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             //llave foranea de centros
             $table->unsignedBigInteger('training_center_id');
 
@@ -32,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('area_programs');
+        Schema::dropIfExists('environments');
     }
 };

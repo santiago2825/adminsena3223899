@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            //llave foranea de centro
+            $table->unsignedBigInteger('training_center_id');
+
+            $table->foreign('training_center_id')
+            ->references('id')
+            ->on('training_centers')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->timestamps();
         });
     }

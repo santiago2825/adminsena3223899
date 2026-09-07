@@ -13,6 +13,24 @@ return new class extends Migration
     {
         Schema::create('enviroment_teachers', function (Blueprint $table) {
             $table->id();
+            //llave foranea de ambiente
+            $table->unsignedBigInteger('environment_id');
+
+            $table->foreign('environment_id')
+            ->references('id')
+            ->on('environments')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            //llave foranea de teacher
+            $table->unsignedBigInteger('teacher_id');
+
+            $table->foreign('teacher_id')
+            ->references('id')
+            ->on('teachers')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->timestamps();
         });
     }

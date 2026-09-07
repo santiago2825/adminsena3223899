@@ -13,7 +13,7 @@ class Environment extends Model
         'name',
         'location',
         'teacher_id',
-        'center_id'
+        'training_center_id'
     ];
 
 
@@ -24,7 +24,7 @@ class Environment extends Model
         return $this->belongsTo('App\Models\Training_center');
     }
     public function courses(){
-        return $this->belongsToMany('App\Models\course');
+        return $this->hasMany('App\Models\course');
     }
     public function teachers(){
         return $this->belongsToMany('App\Models\Teacher');

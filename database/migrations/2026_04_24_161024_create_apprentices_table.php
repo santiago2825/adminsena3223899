@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('apprentices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('document');
             $table->string('email');
             $table->integer('cell_number');
             $table->timestamps();
@@ -27,12 +28,12 @@ return new class extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade')
             ;
-            //llave foranea de computer
-            $table->unsignedBigInteger('computer_id');
+            //llave foranea de usuario
+            $table->unsignedBigInteger('user_id');
 
-            $table->foreign('computer_id')
+            $table->foreign('user_id')
             ->references('id')
-            ->on('computers')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade')
             ;

@@ -14,6 +14,7 @@ class course extends Model
         'course_number',
         'day',
         'program_id',
+        'environment_id'
     ];
     public function apprentices(){
         return $this->hasMany('App\Models\Apprentice');
@@ -22,7 +23,7 @@ class course extends Model
         return $this->belongsTo('App\Models\Program');
     }
     public function environments(){
-        return $this->belongsToMany('App\Models\Environment');
+        return $this->belongsTo('App\Models\Environment');
     }
     public function teachers(){
         return $this->belongsToMany('App\Models\Teacher');
