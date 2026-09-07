@@ -15,7 +15,7 @@
     </div>
 
     <!-- Misión y Visión -->
-    <div class="row g-4 mb-5">
+    <div class="row g-4 mb-5" id="section1">
         <!-- MISIÓN -->
         <div class="col-12 col-md-6">
             <div class="card shadow-sm h-100 border-0 rounded-4 overflow-hidden">
@@ -46,7 +46,7 @@
     </div>
 
     <!-- Valores Corporativos -->
-    <div class="mb-5">
+    <div class="mb-5" id="section2">
         <div class="text-center mb-4">
             <h3 class="fw-bold text-dark">Nuestros Valores</h3>
             <p class="text-muted">Principios que guían nuestra labor diaria con la comunidad</p>
@@ -89,7 +89,7 @@
     </div>
 
     <!-- Objetivos Estratégicos -->
-    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white" id="section3">
         <div class="text-center mb-4">
             <h3 class="fw-bold text-success">Objetivos Estratégicos</h3>
             <p class="text-muted">Pilares que guían nuestro impacto en la sociedad</p>

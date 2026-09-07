@@ -82,3 +82,4 @@ route::post('apprentice/store',[ApprenticeController::class,'store'])->name('app
 route::get('apprentice/{id}/edit',[ApprenticeController::class,'edit'])->name('apprentices.edit');
 route::put('apprentice/{apprentice}',[ApprenticeController::class,'update'])->name('apprentices.update');
 route::delete('apprentice/{apprentice}',[ApprenticeController::class,'destroy'])->name('apprentices.destroy');
+//noticias
