@@ -10,10 +10,11 @@ class computer extends Model
     protected $fillable=[
         'number',
         'brand',
+        'environment_id'
     ];
     
     use HasFactory;
     public function apprentice(){
-        return $this->hasOne('App\Models\Apprentice');
+        return $this->hasOne('App\Models\Environment');
     }
 }
