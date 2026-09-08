@@ -137,53 +137,58 @@
         </div>
     </section>
 
-    <!-- SECCIÓN ACTUALIDAD SENA -->
-    <section class="container py-5">
-        <h2 class="text-center text-success fw-bold mb-4">Actualidad SENA</h2>
+    <!-- SECCIÓN de noticias SENA -->
+<section class="container py-5">
+    <h2 class="text-center text-success fw-bold mb-4">Actualidad SENA</h2>
+    
+    <div class="row g-4 justify-content-center">
         
-        <div class="row g-4 justify-content-center">
-            
-            <!-- Card 1 -->
+        @forelse($news as $item)
             <div class="col-12 col-md-4">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <img src="{{ asset('img/imagen5.webp') }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="noticias">
-                    <div class="card-body">
-                        <h5 class="card-title text-capitalize">Nuevas alianzas internacionales</h5>
-                        <p class="card-text">
-                            El SENA firma importantes acuerdos de cooperación para promover el intercambio de aprendices.
-                        </p>
+                
+                @if($item->image)
+                    <!-- ESTRUCTURA 1: Con Imagen -->
+                    <div class="card border-0 shadow-sm card-hover" style="height: 280px;">
+                        <!-- Imagen estática -->
+                        <img src="{{ asset('storage/images/' . $item->image) }}" class="card-img-top object-fit-cover" style="height: 140px; flex-shrink: 0;" alt="{{ $item->title }}">
+                        
+                        <!-- Contenido con Scroll -->
+                        <div class="card-body" style="overflow-y: auto;">
+                            <small class="text-muted d-block mb-1">{{ $item->date }}</small>
+                            <h5 class="card-title text-capitalize fw-semibold">{{ $item->title }}</h5>
+                            <p class="card-text text-secondary mb-0">
+                                {{ $item->description }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-12 col-md-4">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <img src="{{ asset('img/imagen4.webp') }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="noticias">
-                    <div class="card-body">
-                        <h5 class="card-title text-capitalize">Aprendices triunfan en competencia nacional de robótica</h5>
-                        <p class="card-text">
-                            Equipos de diferentes regionales demostraron su talento y habilidades técnicas obteniendo los primeros lugares en certámenes tecnológicos.
-                        </p>
+                @else
+                    <!-- ESTRUCTURA 2: Sin Imagen -->
+                    <div class="card border-0 border-start border-4 border-success shadow-sm card-hover bg-light-subtle" style="height: 280px;">
+                        <!-- Contenido con Scroll -->
+                        <div class="card-body" style="overflow-y: auto;">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="badge bg-success-subtle text-success border border-success-subtle">Comunicado</span>
+                                <small class="text-muted">{{ $item->date }}</small>
+                            </div>
+                            <h5 class="card-title text-capitalize fw-bold text-success mb-3">
+                                {{ $item->title }}
+                            </h5>
+                            <p class="card-text text-dark-subtle mb-0">
+                                {{ $item->description }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                @endif
 
-            <!-- Card 3 -->
-            <div class="col-12 col-md-4">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <img src="{{ asset('img/imagen6.webp') }}" class="card-img-top object-fit-cover" style="height: 140px;" alt="noticias">
-                    <div class="card-body">
-                        <h5 class="card-title text-capitalize">Fondo Emprender abre nuevas convocatorias para jóvenes</h5>
-                        <p class="card-text">
-                            Se destinan recursos significativos para apoyar iniciativas de negocios innovadoras creadas por jóvenes talentos a nivel nacional.
-                        </p>
-                    </div>
-                </div>
             </div>
+        @empty
+            <div class="col-12 text-center py-4">
+                <p class="text-muted">No hay noticias publicadas por el momento.</p>
+            </div>
+        @endforelse
 
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- Estilo CSS para el efecto hover -->
     <style>

@@ -60,6 +60,12 @@
                                 Centros de formación
                             </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->is('new/*') ? 'active bg-success text-white' : '' }}"
+                                href="/new/list">
+                                Noticias
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

@@ -104,7 +104,7 @@
                         <div class="d-flex justify-content-between">
 
                             <a href="{{ route('apprentices.index') }}"
-                               class="btn btn-secondary rounded-pill px-4">
+                                class="btn btn-secondary rounded-pill px-4">
                                 Cancelar
                             </a>
 

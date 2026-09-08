@@ -6,8 +6,11 @@ use App\Http\Controllers\Consult;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TrainingCenterController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,3 +86,12 @@ route::get('apprentice/{id}/edit',[ApprenticeController::class,'edit'])->name('a
 route::put('apprentice/{apprentice}',[ApprenticeController::class,'update'])->name('apprentices.update');
 route::delete('apprentice/{apprentice}',[ApprenticeController::class,'destroy'])->name('apprentices.destroy');
 //noticias
+route::get('new/list',[NewsController::class,'index'])->name('new.index');
+route::get('new/create',[NewsController::class,'create'])->name('new.create');
+route::post('new/store',[NewsController::class,'store'])->name('new.store');
+route::put('new/{id}',[NewsController::class,'update'])->name('new.update');
+route::delete('new/{news}',[NewsController::class,'destroy'])->name('new.destroy');
+route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
+route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
+// Ruta pública del Home (Tarjetas)
+Route::get('/', [NewsController::class,'home'])->name('home');

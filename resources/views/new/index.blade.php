@@ -11,7 +11,7 @@
                     Administra las noticias
                 </p>
             </div>
-            <a  class="btn btn-success rounded-pill px-4 shadow-sm fw-semibold">
+            <a href="{{ route('new.create') }}"class="btn btn-success rounded-pill px-4 shadow-sm fw-semibold">
                 <i class="fas fa-plus me-1"></i> Nueva notica
             </a>
         </div>
@@ -32,35 +32,53 @@
                     <tbody>
                         @foreach ($news as $new)
                             <tr>
-                                <td class="text-center text-muted fw-bold">{{ $new->id }}</td>
+                                <td class="text-center text-muted fw-bold">
+                                    {{ $new->id }}
+                                </td>
                                 <td class="fw-semibold text-dark text-start">
                                     {{ $new->title }}
                                 </td>
-                                <td class="text-secondary text-start">{{ $computer->brand }}</td>
+                                <td >
+                                    @if ($new->image)
+                                        <img src="{{ asset('storage/images/' . $new->image) }}" alt="Imagen de la noticia"
+                                            class="rounded object-fit-cover" width="40" height="40">
+                                    @else
+                                        <span class="badge bg-secondary">
+                                            Sin imagen
+                                        </span>
+                                    @endif
+                                </td>
+
+                                <td class="text-secondary text-start">
+                                    {{ $new->description }}
+                                </td>
+                                <td class="text-secondary text-start">
+                                    {{ $new->date }}
+                                </td>
+                                
                                 <td class="text-center sticky-actions col-acciones">
-                                    {{-- acciones --}}
                                     <div class="d-flex justify-content-center gap-2">
-                                        <a href="{{ route('computer.show', $computer->id) }}"
+                                        <a href="{{ route('new.show', $new->id) }}"
                                             class="btn btn-sm btn-outline-primary rounded-circle action-btn"
                                             title="Ver detalle">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('computer.edit', $computer->id) }}"
+                                        <a href="{{ route('new.edit', $new->id) }}"
                                             class="btn btn-sm btn-outline-warning rounded-circle action-btn"
                                             title="Editar">
                                             <i class="fas fa-pen"></i>
                                         </a>
-                                        <form action="{{ route('computer.destroy', $computer->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('new.destroy', $new->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle action-btn"
-                                                onclick="return confirm('¿Estás seguro de eliminar este computador?')"
+                                                onclick="return confirm('¿Estás seguro de eliminar esta noticia?')"
                                                 title="Eliminar">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
                                     </div>
-                                </td>
+                                </td> 
                             </tr>
                         @endforeach
                     </tbody>
@@ -68,7 +86,7 @@
                         <tr>
                             <td colspan="4" class="bg-light py-3 border-top">
                                 <div class="d-flex justify-content-center m-0">
-                                    {{ $computers->links() }}
+                                    {{ $news->links() }}
                                 </div>
                             </td>
                         </tr>
@@ -77,9 +95,8 @@
             </div>
         </div>
     </div>
-    
+
     <style>
-        
         .col-acciones {
             width: 140px;
             min-width: 140px;
@@ -100,7 +117,7 @@
             transform: translateY(-2px);
         }
 
-        
+
         .sticky-actions {
             position: sticky;
             right: 0;
@@ -109,13 +126,13 @@
             box-shadow: -3px 0 5px rgba(0, 0, 0, 0.03);
         }
 
-        
-        .table-striped > tbody > tr:nth-of-type(odd) > td.sticky-actions {
+
+        .table-striped>tbody>tr:nth-of-type(odd)>td.sticky-actions {
             background-color: #f9fbf9;
         }
 
-        
-        .table-hover > tbody > tr:hover > td.sticky-actions {
+
+        .table-hover>tbody>tr:hover>td.sticky-actions {
             background-color: #f1f3f5;
         }
 
