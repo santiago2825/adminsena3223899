@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container py-5">
     <!-- Encabezado -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="fw-bold text-success mb-1">
-                Gestión de Aprendices
+                Gestión de programas
             </h1>
             <p class="text-secondary mb-0">
-                Administra los aprendices registrados en el sistema.
+                Administra los programas registrados en el sistema.
             </p>
         </div>
-        <a href="{{ route('apprentices.create') }}"
+        <a href="{{ route('program.create') }}"
             class="btn btn-success rounded-pill px-4 shadow-sm fw-semibold">
-            <i class="fas fa-plus me-1"></i> Nuevo Aprendiz
+            <i class="fas fa-plus me-1"></i> Nuevo programa
         </a>
     </div>
 
@@ -27,55 +26,50 @@
                     <tr>
                         <th class="py-3">ID</th>
                         <th class="text-start py-3">Nombre</th>
-                        <th class="text-start py-3">Correo</th>
-                        <th class="py-3">Teléfono</th>
-                        <th class="py-3">Curso</th>
+                        <th class="text-start py-3">centro</th>
                         <th class="py-3 sticky-actions col-acciones">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($apprentices as $apprentice)
+                    @foreach($programs as $program)
                     <tr>
-                        <td class="text-center text-muted fw-bold">{{ $apprentice->id }}</td>
-                        <td class="fw-semibold text-dark text-start">{{ $apprentice->name }}</td>
-                        <td class="text-secondary text-start">{{ $apprentice->email }}</td>
-                        <td class="text-center text-secondary">{{ $apprentice->cell_number }}</td>
-                        <td class="text-center">
-                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
-                                {{ $apprentice->course->course_number }}
-                            </span>
+                        <td class="text-center text-muted fw-bold">{{ $program->id }}</td>
+                        <td class="fw-semibold text-dark text-start">
+                            {{ $program->name }}
                         </td>
+                        <td class="text-secondary text-start">{{ $program->training_center->name }}</td>
+                        {{-- acciones 
                         <td class="text-center sticky-actions col-acciones">
                             <div class="d-flex justify-content-center gap-2">
-                                <a href="{{ route('apprentices.show', $apprentice->id) }}"
+                                <a href="{{ route('program.show', $program->id) }}"
                                     class="btn btn-sm btn-outline-primary rounded-circle action-btn"
                                     title="Ver detalle">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ route('apprentices.edit', $apprentice->id) }}"
+                                <a href="{{ route('program.edit', $program->id) }}"
                                     class="btn btn-sm btn-outline-warning rounded-circle action-btn"
                                     title="Editar">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <form action="{{ route('apprentices.destroy', $apprentice->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('program.destroy', $program->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle action-btn"
-                                        onclick="return confirm('¿Estás seguro de eliminar este aprendiz?')"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este curso?')"
                                         title="Eliminar">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </div>
-                        </td>
+                        </td>--}}
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="7" class="bg-light py-3 border-top">
+                        <td colspan="6" class="bg-light py-3 border-top">
                             <div class="d-flex justify-content-center m-0">
-                                {{ $apprentices->links() }}
+                                {{ $programs->links() }}
                             </div>
                         </td>
                     </tr>
@@ -155,5 +149,4 @@
         color: white;
     }
 </style>
-
 @endsection

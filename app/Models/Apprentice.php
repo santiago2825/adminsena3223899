@@ -15,7 +15,6 @@ class Apprentice extends Model
         'email',
         'cell_number',
         'course_id',
-        'user_id',
     ];
 
 

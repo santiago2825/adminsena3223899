@@ -84,34 +84,11 @@
 
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">
-                                Computador
-                            </label>
-
-                            <select name="computer_id" class="form-select" required>
-
-                                <option value="">Seleccionar computador</option>
-
-                                @foreach ($computers as $computer)
-
-                                    <option value="{{ $computer->id }}"
-                                        {{ old('computer_id', $apprentice->computer_id) == $computer->id ? 'selected' : '' }}>
-
-                                        {{ $computer->brand }}
-
-                                    </option>
-
-                                @endforeach
-
-                            </select>
-
-                        </div>
 
                         <div class="d-flex justify-content-between">
 
                             <a href="{{ route('apprentices.index') }}"
-                               class="btn btn-secondary rounded-pill px-4">
+                                class="btn btn-secondary rounded-pill px-4">
                                 Cancelar
                             </a>
 

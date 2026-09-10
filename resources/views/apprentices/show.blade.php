@@ -48,28 +48,14 @@
                         value="{{ $apprentice->course->course_number }}"
                         readonly>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Equipo</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        value="{{ $apprentice->computer->number }}"
-                        readonly>
-                </div>
-
                 <div class="text-center mt-4">
                     <a href="{{ route('apprentices.index') }}" class="btn btn-outline-success me-2">
                         Volver
                     </a>
-
                     
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
 @endsection

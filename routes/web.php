@@ -7,6 +7,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TrainingCenterController;
 
@@ -25,6 +26,8 @@ use App\Http\Controllers\TrainingCenterController;
 Route::get('/', function () {
     return view('welcome');
 });
+// Ruta pública del Home (Tarjetas)
+Route::get('/', [NewsController::class,'home'])->name('home');
 //about
 Route::get('/about', function () {
     return view('about');
@@ -93,5 +96,12 @@ route::put('new/{id}',[NewsController::class,'update'])->name('new.update');
 route::delete('new/{news}',[NewsController::class,'destroy'])->name('new.destroy');
 route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
 route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
-// Ruta pública del Home (Tarjetas)
-Route::get('/', [NewsController::class,'home'])->name('home');
+
+//programas
+route::get('program/list',[ProgramController::class,'index'])->name('program.index');
+route::get('program/create',[ProgramController::class,'create'])->name('program.create');
+route::post('program/store',[ProgramController::class,'store'])->name('program.store');
+route::put('program/{id}',[ProgramController::class,'update'])->name('program.update');
+route::delete('program/{programs}',[ProgramController::class,'destroy'])->name('program.destroy');
+route::get('program/{id}',[ProgramController::class,'show'])->name('program.show');
+route::get('Program/{id}/edit',[ProgramController::class,'edit'])->name('program.edit');

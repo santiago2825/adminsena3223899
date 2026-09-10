@@ -66,6 +66,12 @@
                                 Noticias
                             </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->is('program/*') ? 'active bg-success text-white' : '' }}"
+                                href="/program/list">
+                                programas
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

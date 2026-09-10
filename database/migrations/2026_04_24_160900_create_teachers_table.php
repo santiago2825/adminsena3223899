@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
-            $table->string('document');
+            $table->string('email')->nullable();
+            $table->string('document')->nullable();
             $table->timestamps();
 
+            /**forane
             //llave foranea de usuario
             $table->unsignedBigInteger('user_id');
 
@@ -26,7 +27,7 @@ return new class extends Migration
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade')
-            ;
+            ;**/
 
         });
     }

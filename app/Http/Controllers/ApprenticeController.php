@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apprentice;
-use App\Models\computer;
 use App\Models\course;
 use Illuminate\Http\Request;
 
@@ -14,9 +13,8 @@ class ApprenticeController extends Controller
         return view('apprentices.index',compact('apprentices')) ;
     }
     public function create(){
-        $computers = computer::all();
         $courses = course::all();
-        return view('apprentices.create', compact('computers','courses'));
+        return view('apprentices.create', compact('courses'));
     }
     public function show($id){
         $apprentice=Apprentice::find($id);
@@ -28,9 +26,8 @@ class ApprenticeController extends Controller
     }
     public function edit ($id){
         $apprentice=Apprentice::find($id);
-        $computers = computer::all();
         $courses = course::all();
-        return view('apprentices.edit', compact('apprentice','computers','courses')) ;
+        return view('apprentices.edit', compact('apprentice','computers')) ;
     }
     public function update(Request $request, Apprentice $apprentice){
         $apprentice->update($request->all());
