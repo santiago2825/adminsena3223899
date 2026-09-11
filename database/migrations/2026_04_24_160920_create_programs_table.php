@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('level');
+            $table->string('mode');
+            $table->date('start_date');
+            $table->date('end_date');
             //llave foranea de centro
             $table->unsignedBigInteger('training_center_id');
 

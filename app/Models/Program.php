@@ -10,6 +10,10 @@ class Program extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'level',
+        'mode',
+        'start_date',
+        'end_date',
         'training_center_id'
     ];
 

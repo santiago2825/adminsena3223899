@@ -27,6 +27,10 @@
                         <th class="py-3">ID</th>
                         <th class="text-start py-3">Nombre</th>
                         <th class="text-start py-3">centro</th>
+                        <th class="text-start py-3">nivel de formacion</th>
+                        <th class="text-start py-3">modalidad</th>
+                        <th class="text-start py-3">fecha de inicio</th>
+                        <th class="text-start py-3">fecha final</th>
                         <th class="py-3 sticky-actions col-acciones">Acciones</th>
                     </tr>
                 </thead>
@@ -36,6 +40,18 @@
                         <td class="text-center text-muted fw-bold">{{ $program->id }}</td>
                         <td class="fw-semibold text-dark text-start">
                             {{ $program->name }}
+                        </td>
+                        <td class="fw-semibold text-dark text-start">
+                            {{ $program->level }}
+                        </td>
+                        <td class="fw-semibold text-dark text-start">
+                            {{ $program->mode }}
+                        </td>
+                        <td class="fw-semibold text-dark text-start">
+                            {{ $program->start_date }}
+                        </td>
+                        <td class="fw-semibold text-dark text-start">
+                            {{ $program->end_date }}
                         </td>
                         <td class="text-secondary text-start">{{ $program->training_center->name }}</td>
                         {{-- acciones 

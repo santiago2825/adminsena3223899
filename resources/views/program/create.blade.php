@@ -26,6 +26,30 @@
                                 required>
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Nivel de formacion
+                            </label>
+                            <input
+                                type="text"
+                                name="level"
+                                class="form-control"
+                                placeholder="Ingrese en nivel"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                modalidad de formacion
+                            </label>
+                            <input
+                                type="text"
+                                name="mode"
+                                class="form-control"
+                                placeholder="Ingrese su modalidad"
+                                required>
+                        </div>
+
                         <div class="mb-4">
                             <label for="training_center_id" class="form-label fw-semibold">
                                 Centro de formación
