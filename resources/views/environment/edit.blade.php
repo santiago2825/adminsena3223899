@@ -40,12 +40,12 @@
                                 <label for="centro_id" class="form-label text-success-dark fw-bold">
                                     Centro de formación
                                 </label>
-                                <select name="centro_id" id="centro_id" class="form-select custom-input" required>
+                                <select name="training_center_id" id="training_center_id" class="form-select custom-input" required>
                                     <option value="" disabled>Seleccione un centro</option>
                                     @foreach ($training_centers as $training_center)
                                         <option value="{{ $training_center->id }}"
-                                            {{ old('centro_id', $ambiente->centro_id) == $training_center->id ? 'selected' : '' }}>
-                                            {{ $training_center->name ?? $training_center->nombre }}
+                                            {{  $environment->training_center_id == $training_center->id ? 'selected' : '' }}>
+                                            {{ $training_center->name ?? $training_center->name }}
                                         </option>
                                     @endforeach
                                 </select>

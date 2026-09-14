@@ -20,7 +20,7 @@ class Environment extends Model
     public function computer(){
         return $this->hasMany('App\Models\computer');
     }
-    public function training_centers(){
+    public function training_center(){
         return $this->belongsTo('App\Models\Training_center');
     }
     public function courses(){
