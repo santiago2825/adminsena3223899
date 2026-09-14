@@ -27,7 +27,7 @@ class ApprenticeController extends Controller
     public function edit ($id){
         $apprentice=Apprentice::find($id);
         $courses = course::all();
-        return view('apprentices.edit', compact('apprentice','computers')) ;
+        return view('apprentices.edit', compact('apprentice','courses')) ;
     }
     public function update(Request $request, Apprentice $apprentice){
         $apprentice->update($request->all());

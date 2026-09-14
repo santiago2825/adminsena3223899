@@ -6,11 +6,11 @@ use App\Http\Controllers\Consult;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TrainingCenterController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -98,11 +98,19 @@ route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
 route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
 
 //programas
-
 Route::get('program/list', [ProgramController::class, 'index'])->name('program.index');
 Route::get('program/create', [ProgramController::class, 'create'])->name('program.create');
 Route::post('program/store', [ProgramController::class, 'store'])->name('program.store');
 Route::get('program/{id}', [ProgramController::class, 'show'])->name('program.show');
-Route::get('program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit'); // Corregida la P mayúscula
+Route::get('program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit'); 
 Route::put('program/{id}', [ProgramController::class, 'update'])->name('program.update');
-Route::delete('program/{program}', [ProgramController::class, 'destroy'])->name('program.destroy'); // Normalizado a {id}
+Route::delete('program/{program}', [ProgramController::class, 'destroy'])->name('program.destroy'); 
+//ambientes
+Route::get('environment/list', [EnvironmentController::class, 'index'])->name('environment.index');
+Route::get('environment/create', [EnvironmentController::class, 'create'])->name('environment.create');
+Route::post('environment/store', [EnvironmentController::class, 'store'])->name('environment.store');
+//
+Route::get('environment/{id}', [EnvironmentController::class, 'show'])->name('environment.show');
+Route::get('environment/{id}/edit', [EnvironmentController::class, 'edit'])->name('environment.edit'); 
+Route::put('environment/{id}', [EnvironmentController::class, 'update'])->name('environment.update');
+Route::delete('environment/{id}', [EnvironmentController::class, 'destroy'])->name('environment.destroy'); 

@@ -72,6 +72,12 @@
                                 programas
                             </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item {{ request()->is('environment/*') ? 'active bg-success text-white' : '' }}"
+                                href="/environment/list">
+                                ambientes
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

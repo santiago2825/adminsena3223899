@@ -15,15 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            //llaves foranea de teacher
-            $table->unsignedBigInteger('teacher_id');
-
-            $table->foreign('teacher_id')
-            ->references('id')
-            ->on('teachers')
-            ->onDelete('cascade')
-            ->onUpdate('cascade')
-            ;
             //llave foranea de centros
             $table->unsignedBigInteger('training_center_id');
 
