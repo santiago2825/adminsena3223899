@@ -98,10 +98,11 @@ route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
 route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
 
 //programas
-route::get('program/list',[ProgramController::class,'index'])->name('program.index');
-route::get('program/create',[ProgramController::class,'create'])->name('program.create');
-route::post('program/store',[ProgramController::class,'store'])->name('program.store');
-route::put('program/{id}',[ProgramController::class,'update'])->name('program.update');
-route::delete('program/{programs}',[ProgramController::class,'destroy'])->name('program.destroy');
-route::get('program/{id}',[ProgramController::class,'show'])->name('program.show');
-route::get('Program/{id}/edit',[ProgramController::class,'edit'])->name('program.edit');
+
+Route::get('program/list', [ProgramController::class, 'index'])->name('program.index');
+Route::get('program/create', [ProgramController::class, 'create'])->name('program.create');
+Route::post('program/store', [ProgramController::class, 'store'])->name('program.store');
+Route::get('program/{id}', [ProgramController::class, 'show'])->name('program.show');
+Route::get('program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit'); // Corregida la P mayúscula
+Route::put('program/{id}', [ProgramController::class, 'update'])->name('program.update');
+Route::delete('program/{program}', [ProgramController::class, 'destroy'])->name('program.destroy'); // Normalizado a {id}

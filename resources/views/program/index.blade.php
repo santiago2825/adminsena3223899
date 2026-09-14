@@ -26,11 +26,11 @@
                     <tr>
                         <th class="py-3">ID</th>
                         <th class="text-start py-3">Nombre</th>
-                        <th class="text-start py-3">centro</th>
-                        <th class="text-start py-3">nivel de formacion</th>
-                        <th class="text-start py-3">modalidad</th>
-                        <th class="text-start py-3">fecha de inicio</th>
-                        <th class="text-start py-3">fecha final</th>
+                        <th class="text-start py-3">Centro</th>
+                        <th class="text-start py-3">Nivel de formación</th>
+                        <th class="text-start py-3">Modalidad</th>
+                        <th class="text-start py-3">Fecha de inicio</th>
+                        <th class="text-start py-3">Fecha final</th>
                         <th class="py-3 sticky-actions col-acciones">Acciones</th>
                     </tr>
                 </thead>
@@ -40,6 +40,9 @@
                         <td class="text-center text-muted fw-bold">{{ $program->id }}</td>
                         <td class="fw-semibold text-dark text-start">
                             {{ $program->name }}
+                        </td>
+                        <td class="text-secondary text-start">
+                            {{ $program->training_center->name ?? 'Sin Centro' }}
                         </td>
                         <td class="fw-semibold text-dark text-start">
                             {{ $program->level }}
@@ -53,8 +56,7 @@
                         <td class="fw-semibold text-dark text-start">
                             {{ $program->end_date }}
                         </td>
-                        <td class="text-secondary text-start">{{ $program->training_center->name }}</td>
-                        {{-- acciones 
+                        
                         <td class="text-center sticky-actions col-acciones">
                             <div class="d-flex justify-content-center gap-2">
                                 <a href="{{ route('program.show', $program->id) }}"
@@ -77,13 +79,13 @@
                                     </button>
                                 </form>
                             </div>
-                        </td>--}}
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="6" class="bg-light py-3 border-top">
+                        <td colspan="8" class="bg-light py-3 border-top">
                             <div class="d-flex justify-content-center m-0">
                                 {{ $programs->links() }}
                             </div>

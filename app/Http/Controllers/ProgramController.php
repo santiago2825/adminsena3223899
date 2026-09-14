@@ -17,17 +17,19 @@ class ProgramController extends Controller
         return view('program.create',compact('training_centers'));
     }
     public function show($id){
-        $programs = Program::find($id);
-        return view('program.show', compact('programs'));
+        $program = Program::find($id);
+        return view('program.show', compact('program'));
     }
     public function store (Request $request){
         Program::create($request->all());
         return redirect()->route('program.index');
     }
     public function edit ($id){
-        $programs=Program::find($id);
+        // Corregido: $program en singular y findOrFail para validar que el ID exista
+        $program = Program::findOrFail($id);
         $training_centers = Training_center::all();
-        return view('program.edit', compact('programs','training_centers')) ;
+
+        return view('program.edit', compact('program', 'training_centers'));
     }
     public function update(Request $request, Program $programs){
         $programs->update($request->all());
