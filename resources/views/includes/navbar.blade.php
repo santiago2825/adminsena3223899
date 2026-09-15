@@ -62,6 +62,10 @@
                                 <a class="dropdown-item {{ request()->is('environment/*') ? 'active bg-success text-white' : '' }}"
                                     href="{{ route('environment.index') }}">Ambientes</a>
                             </li>
+                            <li>
+                                <a class="dropdown-item {{ request()->is('offer/*') ? 'active bg-success text-white' : '' }}"
+                                    href="{{ route('offer.index') }}">ofertas</a>
+                            </li>
                         </ul>
                     </li>
 

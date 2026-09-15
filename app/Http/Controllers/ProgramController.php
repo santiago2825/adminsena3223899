@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use App\Models\Program;
 use App\Models\Training_center;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ProgramController extends Controller
     }
     public function create(){
         $training_centers = Training_center::all();
-        return view('program.create',compact('training_centers'));
+        $offer = Offer::all();
+        return view('program.create',compact('training_centers','offer'));
     }
     public function show($id){
         $program = Program::find($id);
@@ -28,8 +30,8 @@ class ProgramController extends Controller
         // Corregido: $program en singular y findOrFail para validar que el ID exista
         $program = Program::findOrFail($id);
         $training_centers = Training_center::all();
-
-        return view('program.edit', compact('program', 'training_centers'));
+        $offer = Offer::all();
+        return view('program.edit', compact('program', 'training_centers','offer'));
     }
     public function update(Request $request, Program $programs){
         $programs->update($request->all());

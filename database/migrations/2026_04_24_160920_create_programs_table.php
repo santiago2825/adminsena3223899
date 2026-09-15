@@ -27,6 +27,15 @@ return new class extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade')
             ;
+            //llave foranea de ofertas
+            $table->unsignedBigInteger('offer_id');
+
+            $table->foreign('offer_id')
+            ->references('id')
+            ->on('offers')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->timestamps();
         });
     }

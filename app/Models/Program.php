@@ -14,7 +14,8 @@ class Program extends Model
         'mode',
         'start_date',
         'end_date',
-        'training_center_id'
+        'training_center_id',
+        'offer_id'
     ];
 
     public function course(){
@@ -27,6 +28,6 @@ class Program extends Model
         return $this->belongsTo('App\Models\Training_center');
     }
     public function offer(){
-        return $this->hasMany('App\Models\Offer');
+        return $this->belongsTo('App\Models\Offer');
     }
 }

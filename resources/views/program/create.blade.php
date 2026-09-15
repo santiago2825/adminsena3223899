@@ -75,6 +75,21 @@
                                 </select>
                             </div>
 
+                            <div class="mb-4">
+                                <label for="offer_id" class="form-label fw-semibold">
+                                    ofertas
+                                </label>
+                                <!-- ofertas -->
+                                <select name="offer_id" id="offer_id" class="form-select" required>
+                                    <option value="">Seleccione un centro</option>
+                                    @foreach ($offers as $offer)
+                                        <option value="{{ $offer->id }}">
+                                            {{ $offer->description }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('program.index') }}" class="btn btn-secondary rounded-pill px-4">
                                     Cancelar

@@ -96,6 +96,21 @@
                                     @endforeach
                                 </select>
                             </div>
+                            {{-- ofertas--}}
+                            <div class="mb-4">
+                                <label for="offer_id" class="form-label text-success-dark fw-bold">
+                                    ofertas
+                                </label>
+                                <select name="offer_id" id="offer_id" class="form-select custom-input" required>
+                                    <option value="">Seleccione una oferta</option>
+                                    @foreach ($offers as $offer)
+                                        <option value="{{ $offer->id }}"
+                                            {{ old('offer_id', $program->offer_id) == $offer->id ? 'selected' : '' }}>
+                                            {{ $offer->description }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <hr class="my-4 border-success-subtle">
 

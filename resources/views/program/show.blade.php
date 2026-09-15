@@ -85,6 +85,16 @@
                                 {{ $program->training_center->name ?? 'No asignado' }}
                             </span>
                         </div>
+                        {{-- Centro de Formación --}}
+                        <div class="mb-4">
+                            <label class="text-success small text-uppercase fw-bold d-block mb-1">
+                                oferta
+                            </label>
+                            <span class="fw-semibold text-dark-green">
+                                <i class="fas fa-building me-1 text-success"></i>
+                                {{ $program->offer->description ?? 'No asignado' }}
+                            </span>
+                        </div>
 
                         <hr class="my-4 border-success-subtle">
 

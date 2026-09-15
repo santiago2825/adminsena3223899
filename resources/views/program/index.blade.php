@@ -27,6 +27,7 @@
                         <th class="py-3">ID</th>
                         <th class="text-start py-3">Nombre</th>
                         <th class="text-start py-3">Centro</th>
+                        <th class="text-start py-3">oferta</th>
                         <th class="text-start py-3">Nivel de formación</th>
                         <th class="text-start py-3">Modalidad</th>
                         <th class="text-start py-3">Fecha de inicio</th>
@@ -43,6 +44,9 @@
                         </td>
                         <td class="text-secondary text-start">
                             {{ $program->training_center->name ?? 'Sin Centro' }}
+                        </td>
+                        <td class="text-secondary text-start">
+                            {{ $program->offer->description ?? 'Sin oferta' }}
                         </td>
                         <td class="fw-semibold text-dark text-start">
                             {{ $program->level }}
