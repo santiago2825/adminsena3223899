@@ -4,6 +4,7 @@ use App\Http\Controllers\ApprenticeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Consult;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnvironmentController;
@@ -31,13 +32,11 @@ Route::get('/', [NewsController::class,'home'])->name('home');
 //about
 Route::get('/about', function () {
     return view('about');
-});
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/registro', function () {
-    return view('registro');
-});
+})->name('about');
+//proteccion de rutas
+Route::middleware(['auth'])->group(function () {
+    // Ruta para cerrar sesión
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //areas
 route::get('area/list',[AreaController::class,'index'])->name('area.index');
 route::get('area/create',[AreaController::class,'create'])->name('area.create');
@@ -46,8 +45,6 @@ route::post('area/store',[AreaController::class,'store'])->name('area.store');
 route::get('area/{id}/edit',[AreaController::class,'edit'])->name('area.edit');
 route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
-
-
 //computer
 route::get('computer/list',[ComputerController::class,'index'])->name('computer.index');
 route::get('computer/create',[ComputerController::class,'create'])->name('computer.create');
@@ -88,15 +85,6 @@ route::post('apprentice/store',[ApprenticeController::class,'store'])->name('app
 route::get('apprentice/{id}/edit',[ApprenticeController::class,'edit'])->name('apprentices.edit');
 route::put('apprentice/{apprentice}',[ApprenticeController::class,'update'])->name('apprentices.update');
 route::delete('apprentice/{apprentice}',[ApprenticeController::class,'destroy'])->name('apprentices.destroy');
-//noticias
-route::get('new/list',[NewsController::class,'index'])->name('new.index');
-route::get('new/create',[NewsController::class,'create'])->name('new.create');
-route::post('new/store',[NewsController::class,'store'])->name('new.store');
-route::put('new/{id}',[NewsController::class,'update'])->name('new.update');
-route::delete('new/{news}',[NewsController::class,'destroy'])->name('new.destroy');
-route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
-route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
-
 //programas
 Route::get('program/list', [ProgramController::class, 'index'])->name('program.index');
 Route::get('program/create', [ProgramController::class, 'create'])->name('program.create');
@@ -109,8 +97,28 @@ Route::delete('program/{program}', [ProgramController::class, 'destroy'])->name(
 Route::get('environment/list', [EnvironmentController::class, 'index'])->name('environment.index');
 Route::get('environment/create', [EnvironmentController::class, 'create'])->name('environment.create');
 Route::post('environment/store', [EnvironmentController::class, 'store'])->name('environment.store');
-//
 Route::get('environment/{id}', [EnvironmentController::class, 'show'])->name('environment.show');
 Route::get('environment/{id}/edit', [EnvironmentController::class, 'edit'])->name('environment.edit'); 
 Route::put('environment/{id}', [EnvironmentController::class, 'update'])->name('environment.update');
 Route::delete('environment/{id}', [EnvironmentController::class, 'destroy'])->name('environment.destroy'); 
+});
+// Ruta para mostrar el formulario de registro
+Route::get('/registro', [AuthController::class, 'mostrarRegistro'])->name('registro');
+// Ruta para mostrar el formulario de inicio de sesión
+Route::get('/login', [AuthController::class, 'mostrarLogin'])->name('login');
+// Ruta para cerrar sesión
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Rutas de Procesamiento de Formulario
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+Route::post('/registro', [AuthController::class, 'register'])->name('registro.store');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//noticias
+route::get('new/list',[NewsController::class,'index'])->name('new.index');
+route::get('new/create',[NewsController::class,'create'])->name('new.create');
+route::post('new/store',[NewsController::class,'store'])->name('new.store');
+route::put('new/{id}',[NewsController::class,'update'])->name('new.update');
+route::delete('new/{news}',[NewsController::class,'destroy'])->name('new.destroy');
+route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
+route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
+

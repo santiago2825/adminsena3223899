@@ -12,29 +12,40 @@
                     <p class="text-center text-muted small mb-4">Regístrate en el Sistema de Gestión SENA</p>
                     
                     <!-- Formulario -->
-                    <form>
+                    <form action="{{ route('registro.store') }}" method="POST">
+                        @csrf
+                        
                         <!-- Campo de Nombre -->
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold small">Nombre Completo</label>
-                            <input type="text" class="form-control" id="name" placeholder="Ej. Carlos Pérez" required>
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" placeholder="Ej. Carlos Pérez" required>
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         
                         <!-- Campo de Correo Electrónico -->
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold small">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="correo@gmail.com" required>
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}" placeholder="correo@gmail.com" required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         
                         <!-- Campo de Contraseña -->
                         <div class="mb-3">
                             <label for="password" class="form-label fw-semibold small">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Mínimo 8 caracteres" required>
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Mínimo 8 caracteres" required>
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        <!-- Confirmar Contraseña (Opcional pero recomendado para registros) -->
+                        <!-- Confirmar Contraseña -->
                         <div class="mb-4">
                             <label for="password_confirmation" class="form-label fw-semibold small">Confirmar Contraseña</label>
-                            <input type="password" class="form-control" id="password_confirmation" placeholder="Repite tu contraseña" required>
+                            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Repite tu contraseña" required>
                         </div>
                         
                         <!-- Botón de Registro -->
@@ -44,7 +55,7 @@
 
                         <!-- Enlace para ir al Login -->
                         <div class="text-center">
-                            <p class="small text-muted mb-0">¿Ya tienes una cuenta? <a href="/login" class="text-success text-decoration-none fw-semibold">Inicia sesión aquí</a></p>
+                            <p class="small text-muted mb-0">¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="text-success text-decoration-none fw-semibold">Inicia sesión aquí</a></p>
                         </div>
                     </form>
                     
