@@ -25,21 +25,17 @@
                     </div>
 
                     <div class="row g-3 mb-4">
-                        <!-- Estado -->
+                        <!-- Estado (Booleano evaluado a texto) -->
                         <div class="col-md-4">
                             <label class="text-muted small fw-bold text-uppercase d-block mb-1">Estado</label>
                             <div>
-                                @if($offer->state == 'Activo')
+                                @if($offer->state)
                                     <span class="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill fw-bold">
-                                        <i class="fas fa-circle-check me-1"></i> {{ $offer->state }}
-                                    </span>
-                                @elseif($offer->state == 'Inactivo')
-                                    <span class="badge bg-danger-subtle text-danger border border-danger px-3 py-2 rounded-pill fw-bold">
-                                        <i class="fas fa-circle-xmark me-1"></i> {{ $offer->state }}
+                                        <i class="fas fa-circle-check me-1"></i> Activo
                                     </span>
                                 @else
-                                    <span class="badge bg-warning-subtle text-warning-emphasis border border-warning px-3 py-2 rounded-pill fw-bold">
-                                        <i class="fas fa-clock me-1"></i> {{ $offer->state }}
+                                    <span class="badge bg-danger-subtle text-danger border border-danger px-3 py-2 rounded-pill fw-bold">
+                                        <i class="fas fa-circle-xmark me-1"></i> Inactivo
                                     </span>
                                 @endif
                             </div>

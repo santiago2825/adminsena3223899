@@ -126,7 +126,7 @@ route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
 route::get('offer/list',[OfferController::class,'index'])->name('offer.index');
 route::get('offer/create',[OfferController::class,'create'])->name('offer.create');
 route::post('offer/store',[OfferController::class,'store'])->name('offer.store');
-route::put('offer/{id}',[OfferController::class,'update'])->name('offer.update');
+route::put('offer/{offer}',[OfferController::class,'update'])->name('offer.update');
 route::delete('offer/{offer}',[OfferController::class,'destroy'])->name('offer.destroy');
 route::get('offer/{id}',[OfferController::class,'show'])->name('offer.show');
 route::get('offer/{id}/edit',[OfferController::class,'edit'])->name('offer.edit');

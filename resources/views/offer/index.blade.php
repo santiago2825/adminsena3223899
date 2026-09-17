@@ -13,7 +13,7 @@
                 </p>
             </div>
             <a href="{{ route('offer.create') }}" class="btn btn-success rounded-pill px-4 shadow-sm fw-semibold">
-                <i class="fas fa-plus me-1"></i> Nuevo Ambiente
+                <i class="fas fa-plus me-1"></i> Nueva Oferta
             </a>
         </div>
 
@@ -23,11 +23,11 @@
                 <table class="table table-striped table-hover align-middle mb-0">
                     <thead class="table-dark text-center">
                         <tr>
-                            <th class="py-3">ID</th>
-                            <th class="text-start py-3">descripcion</th>
-                            <th class="text-start py-3">estado</th>
-                            <th class="text-start py-3">fecha de inicio</th>
-                            <th class="text-start py-3">fecha final</th>
+                            <th class="py-3 col-id">ID</th>
+                            <th class="text-start py-3 col-desc">Descripción</th>
+                            <th class="text-start py-3 col-estado">Estado</th>
+                            <th class="text-start py-3 col-fecha">Fecha de inicio</th>
+                            <th class="text-start py-3 col-fecha">Fecha final</th>
                             <th class="py-3 sticky-actions col-acciones">Acciones</th>
                         </tr>
                     </thead>
@@ -35,14 +35,17 @@
                         @foreach ($offers as $offer)
                             <tr>
                                 <td class="text-center text-muted fw-bold">{{ $offer->id }}</td>
-                                <td class="fw-semibold text-dark text-start">{{ $offer->description }}</td>
+                                
+                                <!-- Descripción adaptada para textos largos -->
+                                <td class="fw-semibold text-dark text-start text-truncate" style="max-width: 250px;" title="{{ $offer->description }}">
+                                    {{ $offer->description }}
+                                </td>
+
                                 <td class="text-secondary text-start">
                                     @if ($offer->state)
-                                        <span
-                                            class="badge bg-success-subtle text-success border border-success px-2 py-1 rounded-pill fw-bold">Activo</span>
+                                        <span class="badge bg-success-subtle text-success border border-success px-2 py-1 rounded-pill fw-bold">Activo</span>
                                     @else
-                                        <span
-                                            class="badge bg-danger-subtle text-danger border border-danger px-2 py-1 rounded-pill fw-bold">Inactivo</span>
+                                        <span class="badge bg-danger-subtle text-danger border border-danger px-2 py-1 rounded-pill fw-bold">Inactivo</span>
                                     @endif
                                 </td>
                                 <td class="text-secondary text-start">{{ $offer->start_date }}</td>
@@ -65,7 +68,7 @@
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="btn btn-sm btn-outline-danger rounded-circle action-btn"
-                                                onclick="return confirm('¿Estás seguro de eliminar este ambiente?')"
+                                                onclick="return confirm('¿Estás seguro de eliminar esta oferta?')"
                                                 title="Eliminar">
                                                 <i class="fas fa-trash"></i>
                                             </button>
@@ -77,7 +80,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="5" class="bg-light py-3 border-top">
+                            <td colspan="6" class="bg-light py-3 border-top">
                                 <div class="d-flex justify-content-center m-0">
                                     {{ $offers->links() }}
                                 </div>
@@ -90,6 +93,18 @@
     </div>
 
     <style>
+        /* Regla fundamental para adaptar textos largos en la tabla */
+        .table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        /* Control de anchos de columnas */
+        .col-id { width: 60px; }
+        .col-desc { width: 35%; }
+        .col-estado { width: 110px; }
+        .col-fecha { width: 140px; }
+
         /* Ancho moderado y equilibrado para la columna de acciones */
         .col-acciones {
             width: 140px;

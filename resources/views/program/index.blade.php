@@ -24,14 +24,14 @@
             <table class="table table-striped table-hover align-middle mb-0">
                 <thead class="table-dark text-center">
                     <tr>
-                        <th class="py-3">ID</th>
-                        <th class="text-start py-3">Nombre</th>
-                        <th class="text-start py-3">Centro</th>
-                        <th class="text-start py-3">oferta</th>
-                        <th class="text-start py-3">Nivel de formación</th>
-                        <th class="text-start py-3">Modalidad</th>
-                        <th class="text-start py-3">Fecha de inicio</th>
-                        <th class="text-start py-3">Fecha final</th>
+                        <th class="py-3 col-id">ID</th>
+                        <th class="text-start py-3 col-nombre">Nombre</th>
+                        <th class="text-start py-3 col-centro">Centro</th>
+                        <th class="text-start py-3 col-oferta">Oferta</th>
+                        <th class="text-start py-3 col-nivel">Nivel</th>
+                        <th class="text-start py-3 col-modalidad">Modalidad</th>
+                        <th class="text-start py-3 col-fecha">Fecha inicio</th>
+                        <th class="text-start py-3 col-fecha">Fecha final</th>
                         <th class="py-3 sticky-actions col-acciones">Acciones</th>
                     </tr>
                 </thead>
@@ -39,27 +39,26 @@
                     @foreach($programs as $program)
                     <tr>
                         <td class="text-center text-muted fw-bold">{{ $program->id }}</td>
-                        <td class="fw-semibold text-dark text-start">
+                        
+                        <!-- Nombre del programa con corte si es muy largo -->
+                        <td class="fw-semibold text-dark text-start text-truncate" style="max-width: 200px;" title="{{ $program->name }}">
                             {{ $program->name }}
                         </td>
-                        <td class="text-secondary text-start">
+
+                        <!-- Centro de formación -->
+                        <td class="text-secondary text-start text-truncate" style="max-width: 180px;" title="{{ $program->training_center->name ?? 'Sin Centro' }}">
                             {{ $program->training_center->name ?? 'Sin Centro' }}
                         </td>
-                        <td class="text-secondary text-start">
+
+                        <!-- Oferta -->
+                        <td class="text-secondary text-start text-truncate" style="max-width: 180px;" title="{{ $program->offer->description ?? 'Sin oferta' }}">
                             {{ $program->offer->description ?? 'Sin oferta' }}
                         </td>
-                        <td class="fw-semibold text-dark text-start">
-                            {{ $program->level }}
-                        </td>
-                        <td class="fw-semibold text-dark text-start">
-                            {{ $program->mode }}
-                        </td>
-                        <td class="fw-semibold text-dark text-start">
-                            {{ $program->start_date }}
-                        </td>
-                        <td class="fw-semibold text-dark text-start">
-                            {{ $program->end_date }}
-                        </td>
+
+                        <td class="fw-semibold text-dark text-start">{{ $program->level }}</td>
+                        <td class="fw-semibold text-dark text-start">{{ $program->mode }}</td>
+                        <td class="fw-semibold text-dark text-start">{{ $program->start_date }}</td>
+                        <td class="fw-semibold text-dark text-start">{{ $program->end_date }}</td>
                         
                         <td class="text-center sticky-actions col-acciones">
                             <div class="d-flex justify-content-center gap-2">
@@ -77,7 +76,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle action-btn"
-                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este curso?')"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este programa?')"
                                         title="Eliminar">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -89,7 +88,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="8" class="bg-light py-3 border-top">
+                        <!-- Colspan corregido a 9 por la cantidad total de columnas -->
+                        <td colspan="9" class="bg-light py-3 border-top">
                             <div class="d-flex justify-content-center m-0">
                                 {{ $programs->links() }}
                             </div>
@@ -102,6 +102,22 @@
 </div>
 
 <style>
+    /* Permite adaptar y controlar los anchos de columnas */
+    .table {
+        table-layout: fixed;
+        width: 100%;
+        min-width: 1100px; /* Asegura un ancho mínimo para que la tabla no se aplaste en pantallas chicas */
+    }
+
+    /* Definición de anchos proporcionales */
+    .col-id { width: 50px; }
+    .col-nombre { width: 220px; }
+    .col-centro { width: 180px; }
+    .col-oferta { width: 180px; }
+    .col-nivel { width: 110px; }
+    .col-modalidad { width: 110px; }
+    .col-fecha { width: 120px; }
+
     /* Ancho moderado y equilibrado para la columna de acciones */
     .col-acciones {
         width: 140px;
