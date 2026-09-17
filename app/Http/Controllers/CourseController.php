@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Area;
+
 use App\Models\course;
-use App\Models\Training_center;
+use App\Models\Environment;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,9 +15,9 @@ class CourseController extends Controller
         return view('course.index',compact('courses')) ;
     }
     public function create(){
-        $training_centers = Training_center::all();
-        $areas = Area::all();
-        return view('course.create', compact('training_centers','areas'));
+        $programs = Program::all();
+        $environments = Environment::all();
+        return view('course.create', compact('environments', 'programs'));
     }
     public function show($id){
         $course=course::find($id);
@@ -28,9 +29,9 @@ class CourseController extends Controller
     }
     public function edit ($id){
         $course=course::find($id);
-        $training_centers = Training_center::all();
-        $areas = Area::all();
-        return view('course.edit', compact('course','training_centers','areas')) ;
+        $environments = Environment::all();
+        $programs = Program::all();
+        return view('course.edit', compact('course','environments','programs')) ;
     }
     public function update(Request $request, course $course){
         $course->update($request->all());

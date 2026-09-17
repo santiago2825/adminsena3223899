@@ -24,6 +24,7 @@
                             <th class="py-3">ID</th>
                             <th class="text-start py-3">Número</th>
                             <th class="text-start py-3">Marca</th>
+                            <th class="text-start py-3">Ambiente</th>
                             <th class="py-3 sticky-actions col-acciones">Acciones</th>
                         </tr>
                     </thead>
@@ -35,6 +36,7 @@
                                     {{ $computer->number }}
                                 </td>
                                 <td class="text-secondary text-start">{{ $computer->brand }}</td>
+                                <td class="text-secondary text-start">{{ $computer->environment->name ?? 'No asignado' }}</td>
                                 <td class="text-center sticky-actions col-acciones">
                                     <div class="d-flex justify-content-center gap-2">
                                         <a href="{{ route('computer.show', $computer->id) }}"

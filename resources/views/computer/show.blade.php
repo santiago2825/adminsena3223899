@@ -16,6 +16,7 @@
                                 value="{{ $computer->number }}"
                                 readonly>
                         </div>
+                        
                         <div class="mb-3">
                             <label class="form-label fw-bold">Marca</label>
                             <input
@@ -24,6 +25,16 @@
                                 value="{{ $computer->brand }}"
                                 readonly>
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Ambiente</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                value="{{ $computer->environment->name ?? 'No asignado' }}"
+                                readonly>
+                        </div>
+
                         <div class="d-flex justify-content-center gap-2 mt-4">
                             <a href="{{ route('computer.index') }}" class="btn btn-outline-success">
                                 Volver

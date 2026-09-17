@@ -50,37 +50,39 @@
                                 value="{{ old('brand', $computer->brand) }}"
                                 placeholder="Ingrese la marca"
                                 required>
+                        </div>
 
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">
+                                Ambiente
+                            </label>
+                            <select name="environment_id" class="form-control" required>
+                                <option value="">Seleccione un ambiente</option>
+                                @foreach ($environments as $environment)
+                                    <option value="{{ $environment->id }}" {{ old('environment_id', $computer->environment_id) == $environment->id ? 'selected' : '' }}>
+                                        {{ $environment->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="d-flex justify-content-between">
-
                             <a href="{{ route('computer.index') }}"
-                               class="btn btn-secondary rounded-pill px-4">
+                                class="btn btn-secondary rounded-pill px-4">
                                 Cancelar
                             </a>
-
                             <button
                                 type="submit"
                                 class="btn btn-success rounded-pill px-4">
-
                                 <i class="fas fa-save me-1"></i>
                                 Actualizar
-
                             </button>
-
                         </div>
-
                     </form>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 @endsection

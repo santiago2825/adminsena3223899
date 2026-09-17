@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Computer;
+use App\Models\Environment;
 
 class ComputerController extends Controller
 {
@@ -12,7 +13,8 @@ class ComputerController extends Controller
         return view('computer.index',compact('computers')) ;
     }
     public function create(){
-        return view ('computer.create');
+        $environments = Environment::all();
+        return view('computer.create', compact('environments'));
     }
     public function show($id){
         $computer=Computer::find($id);
@@ -24,7 +26,8 @@ class ComputerController extends Controller
     }
     public function edit ($id){
         $computer=Computer::find($id);
-        return view('computer.edit', compact('computer')) ;
+        $environments = Environment::all();
+        return view('computer.edit', compact('computer', 'environments')) ;
     }
     public function update(Request $request, Computer $computer){
         $computer->update($request->all());

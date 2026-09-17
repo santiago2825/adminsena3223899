@@ -46,18 +46,18 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="area_id" class="form-label fw-semibold">
-                                Área
+                            <label for="program_id" class="form-label fw-semibold">
+                                programa
                             </label>
 
-                            <select name="area_id" id="area_id" class="form-select" required>
+                            <select name="program_id" id="program_id" class="form-select" required>
 
-                                <option value="">Seleccione un área</option>
+                                <option value="">Seleccione un programa</option>
 
-                                @foreach($areas as $area)
+                                @foreach($programs as $program)
 
-                                    <option value="{{ $area->id }}">
-                                        {{ $area->name }}
+                                    <option value="{{ $program->id }}">
+                                        {{ $program->name }}
                                     </option>
 
                                 @endforeach
@@ -66,18 +66,18 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="training_center_id" class="form-label fw-semibold">
-                                Centro de Formación
+                            <label for="environment_id" class="form-label fw-semibold">
+                                Ambiente
                             </label>
 
-                            <select name="training_center_id" id="training_center_id" class="form-select" required>
+                            <select name="environment_id" id="environment_id" class="form-select" required>
 
-                                <option value="">Seleccione un centro de formación</option>
+                                <option value="">Seleccione un ambiente</option>
 
-                                @foreach($training_centers as $training_center)
+                                @foreach($environments as $environment)
 
-                                    <option value="{{ $training_center->id }}">
-                                        {{ $training_center->name }}
+                                    <option value="{{ $environment->id }}">
+                                        {{ $environment->name }}
                                     </option>
 
                                 @endforeach

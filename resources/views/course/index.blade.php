@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="fw-bold text-success mb-1">
-                Gestión de Cursos
+                <i class="fas fa-layer-group me-2"></i>Gestión de Cursos
             </h1>
             <p class="text-secondary mb-0">
                 Administra los cursos registrados en el sistema.
@@ -18,6 +18,14 @@
         </a>
     </div>
 
+    <!-- Mensajes de alerta de sesión (Éxito / Eliminación) -->
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm border-0 mb-4" role="alert">
+            <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <!-- Tabla -->
     <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
         <div class="table-responsive">
@@ -27,21 +35,30 @@
                         <th class="py-3">ID</th>
                         <th class="text-start py-3">Número de Curso</th>
                         <th class="py-3">Día</th>
-                        <th class="text-start py-3">Área</th>
-                        <th class="text-start py-3">Centro de Formación</th>
+                        <th class="text-start py-3">programa</th>
+                        <th class="text-start py-3">Ambiente</th>
                         <th class="py-3 sticky-actions col-acciones">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($courses as $course)
+                    @forelse($courses as $course)
                     <tr>
                         <td class="text-center text-muted fw-bold">{{ $course->id }}</td>
                         <td class="fw-semibold text-dark text-start">
-                            {{ $course->course_number }}
+                            <span class="badge bg-light text-success border border-success me-1 fs-6">
+                                {{ $course->course_number }}
+                            </span>
                         </td>
-                        <td class="text-center text-secondary">{{ $course->day }}</td>
-                        <td class="text-secondary text-start">{{ $course->area->name }}</td>
-                        <td class="text-secondary text-start">{{ $course->training_center->name }}</td>
+                        <td class="text-center text-secondary">
+                            <i class="far fa-calendar-alt text-success me-1"></i>
+                            {{ \Carbon\Carbon::parse($course->day)->format('d/m/Y') }}
+                        </td>
+                        <td class="text-secondary text-start fw-medium">
+                            {{ $course->program->name ?? 'Sin programa' }}
+                        </td>
+                        <td class="text-secondary text-start fw-medium">
+                            {{ $course->environment->name ?? 'Sin ambiente' }}
+                        </td>
                         <td class="text-center sticky-actions col-acciones">
                             <div class="d-flex justify-content-center gap-2">
                                 <a href="{{ route('course.show', $course->id) }}"
@@ -66,8 +83,16 @@
                             </div>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="6" class="text-center py-5 text-muted">
+                            <i class="fas fa-folder-open fa-3x mb-3 d-block text-secondary opacity-50"></i>
+                            No hay cursos registrados actualmente.
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
+                @if($courses->hasPages())
                 <tfoot>
                     <tr>
                         <td colspan="6" class="bg-light py-3 border-top">
@@ -77,6 +102,7 @@
                         </td>
                     </tr>
                 </tfoot>
+                @endif
             </table>
         </div>
     </div>
@@ -91,13 +117,13 @@
 
     /* Ajustes visuales de botones de acción */
     .action-btn {
-        width: 31px;
-        height: 31px;
+        width: 32px;
+        height: 32px;
         padding: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         transition: all 0.2s ease-in-out;
     }
 
@@ -114,9 +140,9 @@
         box-shadow: -3px 0 5px rgba(0, 0, 0, 0.03);
     }
 
-    /* Ajuste de color de fondo para filas impares (striped) en la celda fija */
+    /* Ajuste de color de fondo para filas impares en la celda fija */
     .table-striped > tbody > tr:nth-of-type(odd) > td.sticky-actions {
-        background-color: #f9fbf9;
+        background-color: #f8f9fa;
     }
 
     /* Ajuste de color de fondo al hacer hover en la celda fija */

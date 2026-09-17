@@ -22,7 +22,7 @@ class course extends Model
     public function program(){
         return $this->belongsTo('App\Models\Program');
     }
-    public function environments(){
+    public function environment(){
         return $this->belongsTo('App\Models\Environment');
     }
     public function teachers(){
