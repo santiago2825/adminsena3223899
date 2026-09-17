@@ -25,8 +25,7 @@
                             <th class="py-3">ID</th>
                             <th class="text-start py-3">Nombre</th>
                             <th class="text-start py-3">Correo</th>
-                            <th class="text-start py-3">Área</th>
-                            <th class="text-start py-3">Centro de Formación</th>
+                            <th class="text-start py-3">Documento</th>
                             <th class="py-3 sticky-actions col-acciones">Acciones</th>
                         </tr>
                     </thead>
@@ -38,8 +37,7 @@
                                     {{ $teacher->name }}
                                 </td>
                                 <td class="text-secondary text-start">{{ $teacher->email }}</td>
-                                <td class="text-secondary text-start">{{ $teacher->area->name }}</td>
-                                <td class="text-secondary text-start">{{ $teacher->training_center->name }}</td>
+                                <td class="text-secondary text-start">{{ $teacher->document }}</td>
                                 <td class="text-center sticky-actions col-acciones">
                                     <div class="d-flex justify-content-center gap-2">
                                         <a href="{{ route('teacher.show', $teacher->id) }}"
