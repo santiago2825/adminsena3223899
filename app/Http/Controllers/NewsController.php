@@ -11,11 +11,6 @@ class NewsController extends Controller
         $news = News::orderBy('id','asc')->paginate(5);
         return view('new.index',compact('news'));
     }
-    public function home(){
-    // Traemos las últimas noticias creadas
-    $news = News::orderBy('id', 'desc')->get(); 
-    return view('welcome', compact('news')); // Vista del Home con tarjetas
-    }
     public function create(){
         return view('new.create');
     }
