@@ -38,102 +38,71 @@
         </div>
     </div>
 
-    <!-- SECCIÓN OFERTAS EDUCATIVAS -->
+
+<!-- SECCIÓN de ofertas SENA -->
     <section class="container py-5">
         <h2 class="text-center text-success fw-bold mb-4">Nuestras ofertas educativas</h2>
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             
-            <div class="col-md-8">
-                <!-- card grande con verde suave corregido (bg-opacity-10) -->
-                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-success bg-opacity-10 card-hover">
-                    <div class="card-body p-0 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
-                                style="width: 44px; height:44px;">
-                                <i class="bi bi-mortarboard-fill fs-5"></i>
+            @forelse($offers as $offer)
+                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                    <!-- TARJETA CON ANCHO Y ALTO FIJOS (320px ancho, 350px alto) -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white card-hover d-flex flex-column justify-content-between" 
+                        style="width: 320px; height: 350px; flex-shrink: 0;">
+                        
+                        <!-- PARTE SUPERIOR (CON SCROLL INTERNO SI EL TEXTO ES MUY LARGO) -->
+                        <div class="d-flex flex-column custom-scrollbar" style="overflow-y: auto; max-height: 200px;">
+                            <!-- Header: Ícono superior izquierdo -->
+                            <div class="mb-3">
+                                <div class="rounded-3 d-inline-flex align-items-center justify-content-center" 
+                                    style="width: 48px; height: 48px; background-color: #e8f0fe; color: #1e7e34;">
+                                    <i class="bi bi-mortarboard fs-5"></i>
+                                </div>
                             </div>
-                            <h3 class="h5 fw-bold text-dark mb-2">Carreras técnicas y tecnológicas</h3>
-                            <p class="text-secondary small mb-4">
-                                Programas de educación superior diseñados para responder a las necesidades del sector productivo. Duración de 1 a 2 años.
+                            <!-- Título y Descripción  -->
+                            <h3 class="h5 fw-bold text-dark mb-2" style="font-size: 1.15rem; line-height: 1.3;">
+                                {{ $offer->title }}
+                            </h3>
+                            <p class="text-secondary mb-3 me-1" style="font-size: 0.9rem; line-height: 1.4; color: #5f6368;">
+                                {{ $offer->description }}
                             </p>
                         </div>
-                        <div>
-                            <a class="text-success text-decoration-none fw-semibold small">
-                                Explorar carreras &rarr;
-                            </a>
+                        <!-- PARTE INFERIOR (SIEMPRE FIJA ABAJO) -->
+                        <div class="pt-2">
+                            <!-- Contenedor de Fechas -->
+                            <div class="p-2 rounded-3 mb-3" style="background-color: #f8f9fa;">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <small class="text-muted" style="font-size: 0.78rem;">
+                                        <i class="bi bi-calendar-check text-success me-1"></i> Inicio:
+                                    </small>
+                                    <small class="fw-semibold text-dark" style="font-size: 0.78rem;">
+                                        {{ \Carbon\Carbon::parse($offer->start_date)->format('d/m/Y') }}
+                                    </small>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted" style="font-size: 0.78rem;">
+                                        <i class="bi bi-calendar-x text-danger me-1"></i> Cierre:
+                                    </small>
+                                    <small class="fw-semibold text-dark" style="font-size: 0.78rem;">
+                                        {{ \Carbon\Carbon::parse($offer->end_date)->format('d/m/Y') }}
+                                    </small>
+                                </div>
+                            </div>
+                            <!-- Botón/Enlace de Explorar -->
+                            <div class="text-end">
+                                <a href="#" class="fw-bold text-decoration-none d-inline-flex align-items-center gap-1" 
+                                    style="color: #1e7e34; font-size: 0.9rem;">
+                                    Explorar carreras <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- card pequeña -->
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white card-hover">
-                    <div class="card-body p-0 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
-                                style="width: 44px; height:44px;">
-                                <i class="bi bi-broadcast fs-5"></i>
-                            </div>
-                            <h3 class="h5 fw-bold text-dark mb-2">Cursos cortos</h3>
-                            <p class="text-secondary small mb-4">
-                                Formación complementaria para actualizar o adquirir nuevos conocimientos específicos de forma rápida.
-                            </p>
-                        </div>
-                        <div>
-                            <a class="text-success text-decoration-none fw-semibold small">
-                                Ver cursos &rarr;
-                            </a>
-                        </div>
-                    </div>
+            @empty
+                <div class="col-12 text-center py-4">
+                    <p class="text-muted">No hay ofertas educativas disponibles por el momento.</p>
                 </div>
-            </div>
-
-            <!-- 2 card -->
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white card-hover">
-                    <div class="card-body p-0 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
-                                style="width: 44px; height:44px;">
-                                <i class="bi bi-globe fs-5"></i>
-                            </div>
-                            <h3 class="h5 fw-bold text-dark mb-2">Bilingüismo</h3>
-                            <p class="text-secondary small mb-4">
-                                Programa integral para el aprendizaje de idiomas, fortaleciendo las competencias comunicativas globales.
-                            </p>
-                        </div>
-                        <div>
-                            <a class="text-success text-decoration-none fw-semibold small">
-                                Aprender más &rarr;
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2 card grande -->
-            <div class="col-md-8">
-                <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-success bg-opacity-10 card-hover">
-                    <div class="card-body p-0 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="bg-success bg-opacity-25 text-success rounded-3 d-inline-flex align-items-center justify-content-center mb-3"
-                                style="width: 44px; height:44px;">
-                                <i class="bi bi-display fs-5"></i>
-                            </div>
-                            <h3 class="h5 fw-bold text-dark mb-2">Formación virtual</h3>
-                            <p class="text-secondary small mb-4">
-                                Estudia desde cualquier lugar con nuestra plataforma de aprendizaje en línea. Flexibilidad total para tu desarrollo profesional.
-                            </p>
-                        </div>
-                        <div class="d-flex gap-2 mt-3">
-                            <span class="badge bg-success bg-opacity-25 text-success fw-semibold rounded-pill px-3 py-2">Virtual</span>
-                            <span class="badge bg-success bg-opacity-25 text-success fw-semibold rounded-pill px-3 py-2">A distancia</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @endforelse
         </div>
     </section>
 

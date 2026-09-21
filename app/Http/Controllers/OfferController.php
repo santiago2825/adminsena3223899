@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
+    
     public function index(){
         $offers = Offer::orderBy('id','asc')->paginate(5);
         return view('offer.index',compact('offers'));

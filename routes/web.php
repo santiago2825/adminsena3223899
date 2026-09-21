@@ -25,11 +25,16 @@ use App\Http\Controllers\TrainingCenterController;
 |
 */
 //home
+use App\Models\News;
+use App\Models\Offer;
+
 Route::get('/', function () {
-    return view('welcome');
+    $news = News::orderBy('id', 'desc')->get();
+    $offers = Offer::where('state', 1)->orderBy('id', 'desc')->get();
+
+    return view('welcome', compact('offers', 'news'));
 });
-// Ruta pública del Home (Tarjetas)
-Route::get('/', [NewsController::class,'home'])->name('home');
+
 //about
 Route::get('/about', function () {
     return view('about');
@@ -92,7 +97,7 @@ Route::get('program/create', [ProgramController::class, 'create'])->name('progra
 Route::post('program/store', [ProgramController::class, 'store'])->name('program.store');
 Route::get('program/{id}', [ProgramController::class, 'show'])->name('program.show');
 Route::get('program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit'); 
-Route::put('program/{id}', [ProgramController::class, 'update'])->name('program.update');
+Route::put('program/{program}', [ProgramController::class, 'update'])->name('program.update');
 Route::delete('program/{program}', [ProgramController::class, 'destroy'])->name('program.destroy'); 
 //ambientes
 Route::get('environment/list', [EnvironmentController::class, 'index'])->name('environment.index');

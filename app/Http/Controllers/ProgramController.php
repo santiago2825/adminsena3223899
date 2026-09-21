@@ -33,8 +33,8 @@ class ProgramController extends Controller
         $offers = Offer::all();
         return view('program.edit', compact('program', 'training_centers','offers'));
     }
-    public function update(Request $request, Program $programs){
-        $programs->update($request->all());
+    public function update(Request $request, Program $program){
+        $program->update($request->all());
         return redirect()->route('program.index');
     }
     public function destroy(Program $program){
