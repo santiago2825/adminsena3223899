@@ -27,6 +27,7 @@ use App\Http\Controllers\TrainingCenterController;
 //home
 use App\Models\News;
 use App\Models\Offer;
+use App\Models\Program;
 
 Route::get('/', function () {
     $news = News::orderBy('id', 'desc')->get();
@@ -39,6 +40,20 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+//ofertas programas
+use Illuminate\Http\Request;
+
+Route::get('/offer_program', function (Request $request) {
+    $consult = Program::orderBy('id', 'desc');
+    // Si viene el parámetro offer_id en la URL, filtramos por esa oferta
+    if ($request->has('offer_id')) {
+        $consult->where('offer_id', $request->offer_id);
+    }
+
+    $programs = $consult->get();
+
+    return view('offer_program', compact('programs'));
+})->name('offer_program');
 //proteccion de rutas
 Route::middleware(['auth'])->group(function () {
     // Ruta para cerrar sesión
