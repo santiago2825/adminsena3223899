@@ -59,13 +59,13 @@ Route::middleware(['auth'])->group(function () {
     // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //areas
-route::get('area/list',[AreaController::class,'index'])->name('area.index');
+//route::get('area/list',[AreaController::class,'index'])->name('area.index');
 route::get('area/create',[AreaController::class,'create'])->name('area.create');
-route::get('area/{id}',[AreaController::class,'show'])->name('area.show');
-route::post('area/store',[AreaController::class,'store'])->name('area.store');
+//route::get('area/{id}',[AreaController::class,'show'])->name('area.show');
+//route::post('area/store',[AreaController::class,'store'])->name('area.store');
 route::get('area/{id}/edit',[AreaController::class,'edit'])->name('area.edit');
-route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
-route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
+//route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
+//route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 //computer
 route::get('computer/list',[ComputerController::class,'index'])->name('computer.index');
 route::get('computer/create',[ComputerController::class,'create'])->name('computer.create');
@@ -143,11 +143,11 @@ route::delete('new/{news}',[NewsController::class,'destroy'])->name('new.destroy
 route::get('new/{id}',[NewsController::class,'show'])->name('new.show');
 route::get('new/{id}/edit',[NewsController::class,'edit'])->name('new.edit');
 //ofertas
-route::get('offer/list',[OfferController::class,'index'])->name('offer.index');
+//route::get('offer/list',[OfferController::class,'index'])->name('offer.index');
 route::get('offer/create',[OfferController::class,'create'])->name('offer.create');
-route::post('offer/store',[OfferController::class,'store'])->name('offer.store');
-route::put('offer/{offer}',[OfferController::class,'update'])->name('offer.update');
-route::delete('offer/{offer}',[OfferController::class,'destroy'])->name('offer.destroy');
-route::get('offer/{id}',[OfferController::class,'show'])->name('offer.show');
+//route::post('offer/store',[OfferController::class,'store'])->name('offer.store');
+//route::put('offer/{offer}',[OfferController::class,'update'])->name('offer.update');
+//route::delete('offer/{offer}',[OfferController::class,'destroy'])->name('offer.destroy');
+//route::get('offer/{id}',[OfferController::class,'show'])->name('offer.show');
 route::get('offer/{id}/edit',[OfferController::class,'edit'])->name('offer.edit');
 
