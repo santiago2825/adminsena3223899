@@ -59,13 +59,13 @@ Route::middleware(['auth'])->group(function () {
     // Ruta para cerrar sesión
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //areas
-//route::get('area/list',[AreaController::class,'index'])->name('area.index');
+route::get('area/list',[AreaController::class,'index'])->name('area.index');
 route::get('area/create',[AreaController::class,'create'])->name('area.create');
-//route::get('area/{id}',[AreaController::class,'show'])->name('area.show');
-//route::post('area/store',[AreaController::class,'store'])->name('area.store');
+route::get('area/{id}',[AreaController::class,'show'])->name('area.show');
+route::post('area/store',[AreaController::class,'store'])->name('area.store');
 route::get('area/{id}/edit',[AreaController::class,'edit'])->name('area.edit');
-//route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
-//route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
+route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
+route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 //computer
 route::get('computer/list',[ComputerController::class,'index'])->name('computer.index');
 route::get('computer/create',[ComputerController::class,'create'])->name('computer.create');
