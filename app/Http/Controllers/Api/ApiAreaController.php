@@ -21,11 +21,6 @@ class ApiAreaController extends Controller
     public function show($id)
     {
         $area = Area::find($id);
-
-        if (!$area) {
-            return response()->json(['message' => 'Área no encontrada'], 404);
-        }
-
         return response()->json($area, 200);
     }
 
