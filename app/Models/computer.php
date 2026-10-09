@@ -15,6 +15,6 @@ class computer extends Model
     
     use HasFactory;
     public function environment(){
-        return $this->hasOne('App\Models\Environment');
+        return $this->belongsTo(Environment::class);
     }
 }
