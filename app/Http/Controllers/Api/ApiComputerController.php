@@ -40,7 +40,7 @@ class ApiComputerController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'number'         => ['required', 'integer', 'min:1'],
+            'number'         => ['required', 'integer', 'max:255'],
             'brand'          => ['required', 'string', 'max:255'],
             'environment_id' => ['required', 'integer', 'exists:environments,id'],
         ]);
