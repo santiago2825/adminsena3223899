@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ApprenticeController;
+use App\Http\Controllers\AreaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Consult;
-use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\CourseController;
