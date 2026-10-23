@@ -28,10 +28,10 @@ class ApiApprenticeController extends Controller
         $apprentice = Apprentice::find($id);
 
         if (!$apprentice) {
-            return response()->json(['message' => 'Aprendiz no encontrado'], 404);
+            return response()->json(['message' => 'Aprendiz no encontrado']);
         }
 
-        return response()->json($apprentice, 200);
+        return response()->json($apprentice);
     }
 
     /**
@@ -69,7 +69,7 @@ class ApiApprenticeController extends Controller
 
         $apprentices->update($validated);
 
-        return response()->json($apprentices, 200);
+        return response()->json($apprentices);
     }
 
     /**

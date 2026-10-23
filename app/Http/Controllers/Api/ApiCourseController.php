@@ -15,7 +15,7 @@ class ApiCourseController extends Controller
     public function index()
     {
         $courses = Course::with(['program', 'environment'])->get();
-        return response()->json($courses, 200);
+        return response()->json($courses);
     }
 
     /**
@@ -27,10 +27,10 @@ class ApiCourseController extends Controller
         $course = Course::with(['program', 'environment'])->find($id);
 
         if (!$course) {
-            return response()->json(['message' => 'Curso no encontrado'], 404);
+            return response()->json(['message' => 'Curso no encontrado']);
         }
 
-        return response()->json($course, 200);
+        return response()->json($course);
     }
 
     /**
@@ -48,7 +48,7 @@ class ApiCourseController extends Controller
 
         $course = Course::create($validated);
 
-        return response()->json($course, 201);
+        return response()->json($course);
     }
 
     /**
@@ -66,7 +66,7 @@ class ApiCourseController extends Controller
 
         $courses->update($validated);
 
-        return response()->json($courses, 200);
+        return response()->json($courses);
     }
 
     /**
@@ -80,6 +80,6 @@ class ApiCourseController extends Controller
         return response()->json([
             'message' => 'Curso eliminado correctamente',
             'data'    => $courses
-        ], 200);
+        ]);
     }
 }
