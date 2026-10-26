@@ -16,7 +16,7 @@ class ApiApprenticeController extends Controller
     public function index()
     {
         $apprentices = Apprentice::with('course')->get();
-        return response()->json($apprentices, 200);
+        return response()->json($apprentices);
     }
 
     /**
@@ -25,7 +25,7 @@ class ApiApprenticeController extends Controller
      */
     public function show($id)
     {
-        $apprentice = Apprentice::find($id);
+        $apprentice = Apprentice::with(['course'])->find($id);
 
         if (!$apprentice) {
             return response()->json(['message' => 'Aprendiz no encontrado']);
@@ -50,7 +50,7 @@ class ApiApprenticeController extends Controller
 
         $apprentice = Apprentice::create($validated);
 
-        return response()->json($apprentice, 201);
+        return response()->json($apprentice);
     }
 
     /**

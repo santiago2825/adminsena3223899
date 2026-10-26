@@ -15,7 +15,7 @@ class ApiEnvironmentController extends Controller
     public function index()
     {
         $environments = Environment::with('training_center')->get();
-        return response()->json($environments, 200);
+        return response()->json($environments);
     }
 
     /**
@@ -24,13 +24,13 @@ class ApiEnvironmentController extends Controller
      */
     public function show($id)
     {
-        $environments = Environment::find($id);
+        $environments = Environment::with(['training_center'])->find($id);
 
         if (!$environments) {
-            return response()->json(['message' => 'Ambiente no encontrado'], 404);
+            return response()->json(['message' => 'Ambiente no encontrado']);
         }
 
-        return response()->json($environments, 200);
+        return response()->json($environments);
     }
 
     /**
@@ -47,7 +47,7 @@ class ApiEnvironmentController extends Controller
 
         $environments = Environment::create($request->all());
 
-        return response()->json($environments, 201);
+        return response()->json($environments);
     }
 
     /**
@@ -64,7 +64,7 @@ class ApiEnvironmentController extends Controller
 
         $environments->update($request->all());
 
-        return response()->json($environments, 200);
+        return response()->json($environments);
     }
 
     /**
@@ -78,6 +78,6 @@ class ApiEnvironmentController extends Controller
         return response()->json([
             'message' => 'Ambiente eliminado correctamente',
             'data'    => $environments
-        ], 200);
+        ]);
     }
 }
