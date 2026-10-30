@@ -41,11 +41,11 @@ class ApiComputerController extends Controller
      */
     public function store(Request $request)
     {
-        $$request->validate([
-            'number' => 'required|integer|max:255',
+        $request->validate([
+            'number' => 'required|integer',
             'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
             'brand'=>'required|string|max:255',
-            'environment_id'=>'required|integer|exists:environment,id'
+            'environment_id'=>'required|integer|exists:environments,id'
         ]);
 
         $file = $request->file('imagen');
@@ -67,7 +67,7 @@ class ApiComputerController extends Controller
             ]
         );
 
-        $environments = Computer::create([
+        $computers = Computer::create([
             'number' => $request->number,
             'brand'=> $request->brand,
             'imagen_url' => $resultado['secure_url'],
@@ -77,7 +77,7 @@ class ApiComputerController extends Controller
 
         return response()->json([
             'message' => 'computador creado correctamente',
-            'data' => $environments,
+            'data' => $computers,
         ]);
     }
 
