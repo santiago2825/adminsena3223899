@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('number');
             $table->string('brand');
+            $table->string('imagen_url');
+            $table->string('imagen_public_id');
+
             //llave foranea de ambiente
             
             $table->unsignedBigInteger('environment_id');

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\computer as Computer;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
+
 
 class ApiComputerController extends Controller
 {
@@ -39,15 +41,44 @@ class ApiComputerController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'number'         => ['required', 'integer', 'max:255'],
-            'brand'          => ['required', 'string', 'max:255'],
-            'environment_id' => ['required', 'integer', 'exists:environments,id'],
+        $$request->validate([
+            'number' => 'required|integer|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'brand'=>'required|string|max:255',
+            'environment_id'=>'required|integer|exists:environment,id'
         ]);
 
-        $computer = Computer::create($validated);
+        $file = $request->file('imagen');
 
-        return response()->json($computer, 201);
+        $cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => config('services.cloudinary.cloud_name'),
+                'api_key' => config('services.cloudinary.api_key'),
+                'api_secret' => config('services.cloudinary.api_secret'),
+            ],
+            'url' => ['secure' => true],
+        ]);
+
+        $resultado = $cloudinary->uploadApi()->upload(
+            $file->getRealPath(),
+            [
+                'folder' => 'computer',
+                'resource_type' => 'image',
+            ]
+        );
+
+        $environments = Computer::create([
+            'number' => $request->number,
+            'brand'=> $request->brand,
+            'imagen_url' => $resultado['secure_url'],
+            'imagen_public_id' => $resultado['public_id'],
+            'environment_id' => $request->environment_id
+        ]);
+
+        return response()->json([
+            'message' => 'computador creado correctamente',
+            'data' => $environments,
+        ]);
     }
 
     /**

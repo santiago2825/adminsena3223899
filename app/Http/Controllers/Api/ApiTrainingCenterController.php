@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Training_center;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
+
 
 class ApiTrainingCenterController extends Controller
 {
@@ -37,13 +39,45 @@ class ApiTrainingCenterController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'location'=>'required|string|max:255'
         ]);
-        $trainingCenters = Training_center::create($request->all());
-        return response()->json($trainingCenters, 201);
+
+        $file = $request->file('imagen');
+
+        $cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => config('services.cloudinary.cloud_name'),
+                'api_key' => config('services.cloudinary.api_key'),
+                'api_secret' => config('services.cloudinary.api_secret'),
+            ],
+            'url' => ['secure' => true],
+        ]);
+
+        $resultado = $cloudinary->uploadApi()->upload(
+            $file->getRealPath(),
+            [
+                'folder' => 'trainingcenters',
+                'resource_type' => 'image',
+            ]
+        );
+
+        $trainingCenters = Training_center::create([
+            'name' => $request->name,
+            'location'=> $request->location,
+            'imagen_url' => $resultado['secure_url'],
+            'imagen_public_id' => $resultado['public_id'],
+        ]);
+
+        return response()->json([
+            'message' => 'Centro creado correctamente',
+            'data' => $trainingCenters,
+        ], 201);
     }
+
 
     /**
      * Actualizar un centro de formación existente.
